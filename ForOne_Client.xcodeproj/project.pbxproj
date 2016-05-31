@@ -8,13 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		049DD9131CFDD26B005BBD73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049DD9121CFDD26B005BBD73 /* AppDelegate.swift */; };
-		049DD9151CFDD26B005BBD73 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049DD9141CFDD26B005BBD73 /* ViewController.swift */; };
+		049DD9151CFDD26B005BBD73 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049DD9141CFDD26B005BBD73 /* MainViewController.swift */; };
 		049DD9181CFDD26B005BBD73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 049DD9161CFDD26B005BBD73 /* Main.storyboard */; };
 		049DD91B1CFDD26B005BBD73 /* ForOne_Client.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 049DD9191CFDD26B005BBD73 /* ForOne_Client.xcdatamodeld */; };
 		049DD91D1CFDD26C005BBD73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 049DD91C1CFDD26C005BBD73 /* Assets.xcassets */; };
 		049DD9201CFDD26C005BBD73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 049DD91E1CFDD26C005BBD73 /* LaunchScreen.storyboard */; };
 		049DD92B1CFDD26C005BBD73 /* ForOne_ClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049DD92A1CFDD26C005BBD73 /* ForOne_ClientTests.swift */; };
 		049DD9361CFDD26C005BBD73 /* ForOne_ClientUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049DD9351CFDD26C005BBD73 /* ForOne_ClientUITests.swift */; };
+		049DD9451CFDE74C005BBD73 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049DD9441CFDE74C005BBD73 /* Session.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +38,7 @@
 /* Begin PBXFileReference section */
 		049DD90F1CFDD26B005BBD73 /* ForOne_Client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ForOne_Client.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		049DD9121CFDD26B005BBD73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		049DD9141CFDD26B005BBD73 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		049DD9141CFDD26B005BBD73 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		049DD9171CFDD26B005BBD73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		049DD91A1CFDD26B005BBD73 /* ForOne_Client.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ForOne_Client.xcdatamodel; sourceTree = "<group>"; };
 		049DD91C1CFDD26C005BBD73 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +50,7 @@
 		049DD9311CFDD26C005BBD73 /* ForOne_ClientUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ForOne_ClientUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		049DD9351CFDD26C005BBD73 /* ForOne_ClientUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForOne_ClientUITests.swift; sourceTree = "<group>"; };
 		049DD9371CFDD26C005BBD73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		049DD9441CFDE74C005BBD73 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +101,7 @@
 		049DD9111CFDD26B005BBD73 /* ForOne_Client */ = {
 			isa = PBXGroup;
 			children = (
-				049DD9141CFDD26B005BBD73 /* ViewController.swift */,
+				049DD9141CFDD26B005BBD73 /* MainViewController.swift */,
 				049DD9161CFDD26B005BBD73 /* Main.storyboard */,
 				049DD9431CFDD2B7005BBD73 /* SupportingFiles */,
 			);
@@ -132,6 +134,7 @@
 				049DD91E1CFDD26C005BBD73 /* LaunchScreen.storyboard */,
 				049DD9211CFDD26C005BBD73 /* Info.plist */,
 				049DD9191CFDD26B005BBD73 /* ForOne_Client.xcdatamodeld */,
+				049DD9441CFDE74C005BBD73 /* Session.swift */,
 			);
 			name = SupportingFiles;
 			sourceTree = "<group>";
@@ -268,7 +271,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				049DD9151CFDD26B005BBD73 /* ViewController.swift in Sources */,
+				049DD9451CFDE74C005BBD73 /* Session.swift in Sources */,
+				049DD9151CFDD26B005BBD73 /* MainViewController.swift in Sources */,
 				049DD91B1CFDD26B005BBD73 /* ForOne_Client.xcdatamodeld in Sources */,
 				049DD9131CFDD26B005BBD73 /* AppDelegate.swift in Sources */,
 			);
