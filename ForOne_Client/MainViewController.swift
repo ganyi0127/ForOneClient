@@ -40,8 +40,8 @@ class MainViewController: UIViewController {
             let password:String = passwordTextField.text!
             
             var body = [String:String]()
-            body["username"] = account
-            body["password"] = password
+            body["username"] = "1234567"
+            body["password"] = "12"
             Session.session("/register", body: body){
                 success, response in
                 if success{

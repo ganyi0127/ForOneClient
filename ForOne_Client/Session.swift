@@ -8,14 +8,14 @@
 
 import Foundation
 import UIKit
-let localhost = "http://localhost:8080"
-let nethost = "http://127.0.0.1"
+let localhost = "http://192.168.1.101:8080"
+let nethost = "http://127.0.0.1:8080"
 //import Alamofire
 
 class Session{
     
     class func session(action:String = "",body:[String:String],closure: (success:Bool, response:[String:String]) -> ()) {
-        
+        print("body: \(body)")
         do{
             let requestData=try NSJSONSerialization.dataWithJSONObject(body, options: NSJSONWritingOptions.PrettyPrinted)
             let requestStr = String(data: requestData, encoding: NSUTF8StringEncoding)!
@@ -23,31 +23,35 @@ class Session{
             let urlStr = localhost + action
             let url = NSURL(string: urlStr)
             let request = NSMutableURLRequest(URL: url!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData, timeoutInterval: 120)
-            request.HTTPMethod = "post"
-            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.HTTPMethod = "POST"
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.HTTPBody = requestStr.dataUsingEncoding(NSUTF8StringEncoding)
-            
+            print("requestStr: \(requestStr)")
+            print("request: \(request)")
             let session = NSURLSession.sharedSession()
             let task = session.dataTaskWithRequest(request){
                 
                 data, response, error in
                 
-                guard error != nil else{
+                print("data0: \(data)\nresponse0: \(response)\nerror0: \(error)")
+                guard error == nil else{
                     closure(success: false, response: [:])
                     return
                 }
                 
                 do{
+                    print("data:\(data!)")
                     guard let result:NSDictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary else{
                         closure(success: false, response: [:])
                         return
                     }
-                    
+                    print("result: \(result)")
                     var response = [String:String]()
                     for element in result{
-                        response[element.key as! String] = element.value as? String
+                        print("element: key:\(element.key) value: \(element.value)")
+                        response[String(element.key)] = String(element.value)
                     }
-                    
+                    print("response: \(response)")
                     closure(success: true, response: response)
                     
                 }catch let responseError{
