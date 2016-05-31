@@ -99,13 +99,9 @@
 		049DD9111CFDD26B005BBD73 /* ForOne_Client */ = {
 			isa = PBXGroup;
 			children = (
-				049DD9121CFDD26B005BBD73 /* AppDelegate.swift */,
 				049DD9141CFDD26B005BBD73 /* ViewController.swift */,
 				049DD9161CFDD26B005BBD73 /* Main.storyboard */,
-				049DD91C1CFDD26C005BBD73 /* Assets.xcassets */,
-				049DD91E1CFDD26C005BBD73 /* LaunchScreen.storyboard */,
-				049DD9211CFDD26C005BBD73 /* Info.plist */,
-				049DD9191CFDD26B005BBD73 /* ForOne_Client.xcdatamodeld */,
+				049DD9431CFDD2B7005BBD73 /* SupportingFiles */,
 			);
 			path = ForOne_Client;
 			sourceTree = "<group>";
@@ -126,6 +122,18 @@
 				049DD9371CFDD26C005BBD73 /* Info.plist */,
 			);
 			path = ForOne_ClientUITests;
+			sourceTree = "<group>";
+		};
+		049DD9431CFDD2B7005BBD73 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				049DD9121CFDD26B005BBD73 /* AppDelegate.swift */,
+				049DD91C1CFDD26C005BBD73 /* Assets.xcassets */,
+				049DD91E1CFDD26C005BBD73 /* LaunchScreen.storyboard */,
+				049DD9211CFDD26C005BBD73 /* Info.plist */,
+				049DD9191CFDD26B005BBD73 /* ForOne_Client.xcdatamodeld */,
+			);
+			name = SupportingFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -406,6 +414,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = ForOne_Client/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.orangebrush.ForOne-Client";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -418,6 +427,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = ForOne_Client/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.orangebrush.ForOne-Client";
 				PRODUCT_NAME = "$(TARGET_NAME)";
