@@ -14,14 +14,16 @@ class MainViewController: UIViewController {
     @IBOutlet var accountTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     
-    var boxViewOriginFrame:CGRect?
+    @IBOutlet var noteLabel: UILabel!
+    
+    @IBOutlet var loginButton: UIButton!
+    var activityIndicatorView:UIActivityIndicatorView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
        
         config()
         
-        boxViewOriginFrame = boxView.frame
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,11 +34,16 @@ class MainViewController: UIViewController {
     private func config(){
         NotifictionCenter.addObserver(self, selector: #selector(MainViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
         NotifictionCenter.addObserver(self, selector: #selector(MainViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+        
+        loginButton.layer.cornerRadius = loginButton.frame.size.width / 2
     }
 
-    @IBAction func register(sender: UIButton) {
+    //MARK:注册，用于快速登陆时注册
+    func register(sender: UIButton) {
+        
     }
     
+    //MARK:登陆
     @IBAction func login(sender: UIButton) {
         
         accountTextField.endEditing(true)
@@ -44,25 +51,45 @@ class MainViewController: UIViewController {
         
         if sender.tag==0 {
             //快速登录
+            register(sender)
         }else{
-            //账号密码登录
-            let account:String = accountTextField.text!
-            let password:String = passwordTextField.text!
             
+            guard let account:String = accountTextField.text where !account.characters.isEmpty else{
+                AlertView.showAlert(alertMessage: "要输入帐号 0_0", alertDelegate: nil)
+                return
+            }
+            
+            guard let password:String = passwordTextField.text where !password.characters.isEmpty else{
+                AlertView.showAlert(alertMessage: "要输入密码 0_0", alertDelegate: nil)
+                return
+            }
+            
+            //添加loading视图
+            if activityIndicatorView == nil {
+                activityIndicatorView = AlertView.createActivityIndicator(loginButton.frame.size.width / 2, y: loginButton.frame.size.height / 2)
+                loginButton.addSubview(activityIndicatorView!)
+            }else{
+                activityIndicatorView?.startAnimating()
+            }
+            
+            //账号密码登录
             var body = [String:String]()
             body["username"] = account
             body["password"] = password
-            Session.session("/login", body: body){
+            Session.session(Action.login, body: body){
                 success, result, reason in
+                
+                self.activityIndicatorView?.stopAnimating()
+                
                 if success{
                    //载入
                     let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
                     let mainTabBar = storyboard.instantiateViewControllerWithIdentifier("maintabbar")
+                    self.showViewController(mainTabBar, sender: nil)
                     
-                    
-
                 }else{
                    
+                    AlertView.showAlert(alertMessage: reason!, alertDelegate: nil)
                 }
             }
         }
@@ -93,6 +120,9 @@ extension MainViewController:UITextFieldDelegate{
         
         let animations = {
             self.boxView.transform = CGAffineTransformMakeTranslation(0, -offset)
+            self.noteLabel.transform = CGAffineTransformMakeTranslation(0, -offset)
+            self.noteLabel.hidden = false
+            
         }
         
         if duration > 0 {
@@ -112,6 +142,8 @@ extension MainViewController:UITextFieldDelegate{
         
         let animations = {
             self.boxView.transform = CGAffineTransformIdentity
+            self.noteLabel.transform = CGAffineTransformIdentity
+            self.noteLabel.hidden = true
         }
         
         if duration > 0 {
@@ -127,6 +159,7 @@ extension MainViewController:UITextFieldDelegate{
             passwordTextField.becomeFirstResponder()
         }else if textField.tag == 1{
             textField.resignFirstResponder()
+            login(loginButton)
         }
         return false
     }

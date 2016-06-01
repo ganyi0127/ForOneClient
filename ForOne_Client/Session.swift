@@ -8,11 +8,8 @@
 
 import Foundation
 import UIKit
-let localhost = "http://192.168.1.101:8080"
-let nethost = "http://127.0.0.1:8080"
-let workhost = "http://192.168.1.127:8080"
 
-//import Alamofire
+
 
 class Session{
     
@@ -22,7 +19,7 @@ class Session{
             let requestData=try NSJSONSerialization.dataWithJSONObject(body, options: NSJSONWritingOptions.PrettyPrinted)
             let requestStr = String(data: requestData, encoding: NSUTF8StringEncoding)!
             
-            let urlStr = workhost + action
+            let urlStr = homehost + action
             let url = NSURL(string: urlStr)
             let request = NSMutableURLRequest(URL: url!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData, timeoutInterval: 120)
             request.HTTPMethod = "POST"
@@ -78,7 +75,7 @@ class Session{
     
     class func upload(image:UIImage, closure:(success:Bool) -> ()){
         
-        let urlStr = localhost + "/use/head"
+        let urlStr = homehost + "/use/head"
         let url = NSURL(string: urlStr)
         let request = NSMutableURLRequest(URL: url!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData, timeoutInterval: 120)
         request.addValue("image/png", forHTTPHeaderField: "Content-Type")
@@ -90,26 +87,30 @@ class Session{
         let session = NSURLSession.sharedSession()
         let task = session.uploadTaskWithRequest(request, fromData: imageData!){
             data,response,error in
-            guard error != nil else{
-                closure(success: false)
-                return
-            }
             
-            do{
-                guard let result:NSDictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary else{
+            dispatch_async(dispatch_get_main_queue()){
+                
+                guard error != nil else{
                     closure(success: false)
                     return
                 }
-                print("result: \(result)")
-                var response = [String:String]()
-                for element in result{
-                    response[element.key as! String] = element.value as? String
+                
+                do{
+                    guard let result:NSDictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary else{
+                        closure(success: false)
+                        return
+                    }
+                    print("result: \(result)")
+                    var response = [String:String]()
+                    for element in result{
+                        response[element.key as! String] = element.value as? String
+                    }
+                    
+                    closure(success: true)
+                    
+                }catch let responseError{
+                    print("response数据处理错误: \(responseError)")
                 }
-                
-                closure(success: true)
-                
-            }catch let responseError{
-                print("response数据处理错误: \(responseError)")
             }
         }
         task.resume()
