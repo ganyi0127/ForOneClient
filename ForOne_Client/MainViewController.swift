@@ -14,14 +14,24 @@ class MainViewController: UIViewController {
     @IBOutlet var accountTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     
+    var boxViewOriginFrame:CGRect?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
        
+        config()
+        
+        boxViewOriginFrame = boxView.frame
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
        
+    }
+    
+    private func config(){
+        NotifictionCenter.addObserver(self, selector: #selector(MainViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        NotifictionCenter.addObserver(self, selector: #selector(MainViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
     }
 
     @IBAction func register(sender: UIButton) {
@@ -40,46 +50,83 @@ class MainViewController: UIViewController {
             let password:String = passwordTextField.text!
             
             var body = [String:String]()
-            body["username"] = "1234567"
-            body["password"] = "12"
-            Session.session("/register", body: body){
-                success, response in
+            body["username"] = account
+            body["password"] = password
+            Session.session("/login", body: body){
+                success, result, reason in
                 if success{
+                   //载入
+                    let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+                    let mainTabBar = storyboard.instantiateViewControllerWithIdentifier("maintabbar")
                     
+                    
+
                 }else{
-                    
+                   
                 }
             }
         }
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        accountTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+    }
+    
+    deinit{
+        NotifictionCenter.removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
+        NotifictionCenter.removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
     }
 
 }
 
 extension MainViewController:UITextFieldDelegate{
-    func textFieldDidBeginEditing(textField: UITextField) {
-        let textFieldHeight:CGFloat = textField.convertPoint(textField.frame.origin, toView: view).y
-        let keyboardHeight:CGFloat = 258 + 20 // 252/216
+    
+    //键盘弹出
+    func keyboardWillShow(notif:NSNotification){
+        let userInfo = notif.userInfo
         
-        let offset:CGFloat = UIScreen.mainScreen().bounds.size.height - keyboardHeight > textFieldHeight ? 0 : textFieldHeight - (UIScreen.mainScreen().bounds.size.height - keyboardHeight)
+        let keyboardBounds = (userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
+        let duration = (userInfo![UIKeyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
         
-        UIView.animateWithDuration(0.5, animations: {() -> Void in
-            var frame:CGRect =  self.view.frame
-            frame.origin.y = -offset
-            self.view.frame = frame
-            }, completion: { _ in
-                
-        })
+        let offset = keyboardBounds.size.height
+        
+        let animations = {
+            self.boxView.transform = CGAffineTransformMakeTranslation(0, -offset)
+        }
+        
+        if duration > 0 {
+            let options = UIViewAnimationOptions(rawValue: UInt((userInfo![UIKeyboardAnimationCurveUserInfoKey] as! NSNumber).integerValue << 16))
+            UIView.animateWithDuration(duration, delay: 0, options: options, animations: animations, completion: nil)
+        }else{
+            animations()
+        }
+        
     }
     
-    func textFieldDidEndEditing(textField: UITextField) {
+    //键盘回收
+    func keyboardWillHide(notif:NSNotification){
+        let userInfo = notif.userInfo
         
+        let duration = (userInfo![UIKeyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
+        
+        let animations = {
+            self.boxView.transform = CGAffineTransformIdentity
+        }
+        
+        if duration > 0 {
+            let options = UIViewAnimationOptions(rawValue: UInt((userInfo![UIKeyboardAnimationCurveUserInfoKey] as! NSNumber).integerValue << 16))
+            UIView.animateWithDuration(duration, delay: 0, options: options, animations: animations, completion: nil)
+        }else{
+            animations()
+        }
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        if textField==0{
-            return false
-        }else if textField==1{
-            return true
+        if textField.tag == 0{
+            passwordTextField.becomeFirstResponder()
+        }else if textField.tag == 1{
+            textField.resignFirstResponder()
         }
         return false
     }

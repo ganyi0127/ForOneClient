@@ -10,49 +10,60 @@ import Foundation
 import UIKit
 let localhost = "http://192.168.1.101:8080"
 let nethost = "http://127.0.0.1:8080"
+let workhost = "http://192.168.1.127:8080"
+
 //import Alamofire
 
 class Session{
     
-    class func session(action:String = "",body:[String:String],closure: (success:Bool, response:[String:String]) -> ()) {
-        print("body: \(body)")
+    class func session(action:String = "",body:[String:String],closure: (success:Bool, result:[String:String]? , reason:String?) -> ()) {
+        
         do{
             let requestData=try NSJSONSerialization.dataWithJSONObject(body, options: NSJSONWritingOptions.PrettyPrinted)
             let requestStr = String(data: requestData, encoding: NSUTF8StringEncoding)!
             
-            let urlStr = localhost + action
+            let urlStr = workhost + action
             let url = NSURL(string: urlStr)
             let request = NSMutableURLRequest(URL: url!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData, timeoutInterval: 120)
             request.HTTPMethod = "POST"
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.HTTPBody = requestStr.dataUsingEncoding(NSUTF8StringEncoding)
-            print("requestStr: \(requestStr)")
-            print("request: \(request)")
             let session = NSURLSession.sharedSession()
             let task = session.dataTaskWithRequest(request){
                 
                 data, response, error in
                 
-                print("data0: \(data)\nresponse0: \(response)\nerror0: \(error)")
                 guard error == nil else{
-                    closure(success: false, response: [:])
+                    closure(success: false, result: nil, reason: "连接错误")
                     return
                 }
                 
                 do{
-                    print("data:\(data!)")
                     guard let result:NSDictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary else{
-                        closure(success: false, response: [:])
+                        closure(success: false, result: nil, reason: "数据错误")
                         return
                     }
-                    print("result: \(result)")
-                    var response = [String:String]()
-                    for element in result{
-                        print("element: key:\(element.key) value: \(element.value)")
-                        response[String(element.key)] = String(element.value)
+                    
+                    /*
+                     通过response["result"]判断后台返回数据是否合法
+                     result == 1 ------true
+                     result == 0 ------false
+                    */
+                    
+                    if result["result"] as! Bool{
+                        
+                        var swiftResult = [String:String]()
+                        for element in result["data"] as! NSDictionary{
+                            swiftResult[String(element.key)] = String(element.value)
+                        }
+                        print("url session data: result = \(swiftResult)")
+                        
+                        closure(success: true, result: swiftResult, reason: nil)
+                    }else{
+                        closure(success: false, result: nil, reason: result["reason"] as? String)
+                        print("url session data: reason = \(result["reason"] as? String)")
                     }
-                    print("response: \(response)")
-                    closure(success: true, response: response)
+                    
                     
                 }catch let responseError{
                     print("response数据处理错误: \(responseError)")
