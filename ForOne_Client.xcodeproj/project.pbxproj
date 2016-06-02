@@ -17,11 +17,11 @@
 		049DD9361CFDD26C005BBD73 /* ForOne_ClientUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049DD9351CFDD26C005BBD73 /* ForOne_ClientUITests.swift */; };
 		049DD9451CFDE74C005BBD73 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049DD9441CFDE74C005BBD73 /* Session.swift */; };
 		049DD9471CFF2976005BBD73 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049DD9461CFF2976005BBD73 /* AlertView.swift */; };
+		049DD94B1D00944E005BBD73 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049DD9491D00944E005BBD73 /* User+CoreDataProperties.swift */; };
+		049DD94C1D00944E005BBD73 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049DD94A1D00944E005BBD73 /* User.swift */; };
 		3224095E1CFE7A7E00F9E66E /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3224095D1CFE7A7E00F9E66E /* RegisterViewController.swift */; };
 		322409601CFEE35100F9E66E /* Configure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3224095F1CFEE35100F9E66E /* Configure.swift */; };
 		322409621D00229E00F9E66E /* SexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322409611D00229E00F9E66E /* SexViewController.swift */; };
-		322409651D0031C500F9E66E /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322409631D0031C500F9E66E /* User+CoreDataProperties.swift */; };
-		322409661D0031C500F9E66E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322409641D0031C500F9E66E /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,11 +58,11 @@
 		049DD9371CFDD26C005BBD73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		049DD9441CFDE74C005BBD73 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		049DD9461CFF2976005BBD73 /* AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		049DD9491D00944E005BBD73 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		049DD94A1D00944E005BBD73 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3224095D1CFE7A7E00F9E66E /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		3224095F1CFEE35100F9E66E /* Configure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configure.swift; sourceTree = "<group>"; };
 		322409611D00229E00F9E66E /* SexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SexViewController.swift; sourceTree = "<group>"; };
-		322409631D0031C500F9E66E /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		322409641D0031C500F9E66E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,14 +146,22 @@
 				049DD91C1CFDD26C005BBD73 /* Assets.xcassets */,
 				049DD91E1CFDD26C005BBD73 /* LaunchScreen.storyboard */,
 				049DD9211CFDD26C005BBD73 /* Info.plist */,
-				049DD9191CFDD26B005BBD73 /* ForOne_Client.xcdatamodeld */,
-				322409631D0031C500F9E66E /* User+CoreDataProperties.swift */,
-				322409641D0031C500F9E66E /* User.swift */,
+				049DD9481D009402005BBD73 /* CoreData */,
 				049DD9441CFDE74C005BBD73 /* Session.swift */,
 				3224095F1CFEE35100F9E66E /* Configure.swift */,
 				049DD9461CFF2976005BBD73 /* AlertView.swift */,
 			);
 			name = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		049DD9481D009402005BBD73 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				049DD9191CFDD26B005BBD73 /* ForOne_Client.xcdatamodeld */,
+				049DD9491D00944E005BBD73 /* User+CoreDataProperties.swift */,
+				049DD94A1D00944E005BBD73 /* User.swift */,
+			);
+			name = CoreData;
 			sourceTree = "<group>";
 		};
 		3224095C1CFE7A4100F9E66E /* 注册页 */ = {
@@ -305,8 +313,8 @@
 				049DD9151CFDD26B005BBD73 /* MainViewController.swift in Sources */,
 				049DD91B1CFDD26B005BBD73 /* ForOne_Client.xcdatamodeld in Sources */,
 				049DD9131CFDD26B005BBD73 /* AppDelegate.swift in Sources */,
-				322409661D0031C500F9E66E /* User.swift in Sources */,
-				322409651D0031C500F9E66E /* User+CoreDataProperties.swift in Sources */,
+				049DD94C1D00944E005BBD73 /* User.swift in Sources */,
+				049DD94B1D00944E005BBD73 /* User+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

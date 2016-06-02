@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+@IBDesignable
 class MainViewController: UIViewController {
 
     @IBOutlet var boxView: UIView!
@@ -16,6 +16,7 @@ class MainViewController: UIViewController {
     
     @IBOutlet var noteLabel: UILabel!
     
+    @IBInspectable
     @IBOutlet var loginButton: UIButton!
     var activityIndicatorView:UIActivityIndicatorView?
     

@@ -7,12 +7,14 @@
 //
 
 import UIKit
+@IBDesignable
 class RegisterViewController: UIViewController {
     
     @IBOutlet weak var accountTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmTextField: UITextField!
     
+    @IBInspectable
     @IBOutlet var registerButton: UIButton!
     var activityIndicatorView:UIActivityIndicatorView?
     
@@ -30,15 +32,15 @@ class RegisterViewController: UIViewController {
         
         accountTextField.endEditing(true)
         passwordTextField.endEditing(true)
-        
+//        passwordTextField.text?.rangeOfString("^[A-Za-z0-9]{6,20}+$", options: .RegularExpressionSearch, range: nil, locale: nil)
         //账号密码注册
         guard let account:String = accountTextField.text where account.characters.count >= 4 else{
             AlertView.showAlert(alertMessage: "帐号太短啦", alertDelegate: nil)
             return
         }
         
-        guard let password:String = passwordTextField.text where password.characters.count >= 6 else{
-            AlertView.showAlert(alertMessage: "请输入6位或以上的密码咯", alertDelegate: nil)
+        guard let password:String = passwordTextField.text where (password.rangeOfString("^[A-Za-z0-9]{6,20}+$", options: .RegularExpressionSearch, range: nil, locale: nil) != nil) else{
+            AlertView.showAlert(alertMessage: "密码长度6~20咯", alertDelegate: nil)
             return
         }
         

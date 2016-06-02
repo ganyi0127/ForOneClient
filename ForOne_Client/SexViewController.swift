@@ -23,10 +23,46 @@ class SexViewController: UIViewController {
         }
         
         //纪录到coredata中
-        let context = AppDelegate().managedObjectContext
+        let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
         //找到实体结构，并生成一个实体对象
-        let user = NSEntityDescription.insertNewObjectForEntityForName("user", inManagedObjectContext: context)
+        let row = NSEntityDescription.insertNewObjectForEntityForName("user", inManagedObjectContext: context)
+        row.setValue(sex, forKey: "sex")
+        do{
+            try context.save()
+        }catch let e{
+            print(e)
+        }
         
-        user.setValue(sex, forKey: "sex")
+        
+        //selectAll
+        //构造查询对象
+        let request = NSFetchRequest(entityName: "user")
+//        let userDescription = NSEntityDescription.entityForName("user", inManagedObjectContext: context)
+//        request.entity = userDescription
+        do{
+            
+            let result = try context.executeFetchRequest(request)
+            if !result.isEmpty {
+                print(result)
+            }
+            try context.save()
+        }catch let e{
+            print(e)
+        }
+        
+    
+        let predicate = NSPredicate(format: "userid=1", 1)
+        request.predicate = predicate
+        do{
+            
+            let result = try context.executeFetchRequest(request)
+            print(result)
+            for obj in result {
+                context.deleteObject(obj as! NSManagedObject)
+            }
+            try context.save()
+        }catch let e{
+            print(e)
+        }
     }
 }
