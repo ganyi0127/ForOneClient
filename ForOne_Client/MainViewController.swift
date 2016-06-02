@@ -50,8 +50,10 @@ class MainViewController: UIViewController {
         passwordTextField.endEditing(true)
         
         if sender.tag==0 {
-            //快速登录
-            register(sender)
+            //快速登录 直接载入
+            let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+            let mainTabBar = storyboard.instantiateViewControllerWithIdentifier("maintabbar")
+            self.showViewController(mainTabBar, sender: nil)
         }else{
             
             guard let account:String = accountTextField.text where !account.characters.isEmpty else{
@@ -112,7 +114,7 @@ extension MainViewController:UITextFieldDelegate{
     //键盘弹出
     func keyboardWillShow(notif:NSNotification){
         let userInfo = notif.userInfo
-        
+       
         let keyboardBounds = (userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
         let duration = (userInfo![UIKeyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
         
@@ -137,7 +139,7 @@ extension MainViewController:UITextFieldDelegate{
     //键盘回收
     func keyboardWillHide(notif:NSNotification){
         let userInfo = notif.userInfo
-        
+       
         let duration = (userInfo![UIKeyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
         
         let animations = {

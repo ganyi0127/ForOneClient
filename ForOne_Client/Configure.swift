@@ -20,4 +20,6 @@ let workhost = "http://192.168.1.127:8080"
 struct Action{
     static let register = "/register"
     static let login = "/login"
+    static let getInfo = "/getinfo"
+    static let setInfo = "/setinfo"
 }

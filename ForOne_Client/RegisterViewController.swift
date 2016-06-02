@@ -66,8 +66,8 @@ class RegisterViewController: UIViewController {
             if success{
                 //载入
                 let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-                let mainTabBar = storyboard.instantiateViewControllerWithIdentifier("maintabbar")
-                self.showViewController(mainTabBar, sender: nil)
+                let sexViewController = storyboard.instantiateViewControllerWithIdentifier("sexviewcontroller")
+                self.showViewController(sexViewController, sender: nil)
             }else{
                 AlertView.showAlert(alertMessage: reason!, alertDelegate: nil)
             }
