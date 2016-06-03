@@ -2,7 +2,7 @@
 //  User+CoreDataProperties.swift
 //  ForOne_Client
 //
-//  Created by GAN-mac on 16/6/3.
+//  Created by ganyi on 16/6/3.
 //  Copyright © 2016年 gan. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -24,9 +24,9 @@ extension User {
     @NSManaged var personality: String?
     @NSManaged var sex: String?
     @NSManaged var telephone: String?
-    @NSManaged var tokenid: Int32
+    @NSManaged var tokenid: String?
+    @NSManaged var userid: Int32
     @NSManaged var username: String?
     @NSManaged var weight: Int32
-    @NSManaged var userid: Int32
 
 }

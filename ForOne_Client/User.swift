@@ -2,7 +2,7 @@
 //  User.swift
 //  ForOne_Client
 //
-//  Created by GAN-mac on 16/6/3.
+//  Created by ganyi on 16/6/3.
 //  Copyright © 2016年 gan. All rights reserved.
 //
 
@@ -11,5 +11,12 @@ import CoreData
 
 
 class User: NSManagedObject {
+
+    override func willSave() {
+        print("willSave!")
+    }
+    override func didSave() {
+        print("didSave!")
+    }
 
 }

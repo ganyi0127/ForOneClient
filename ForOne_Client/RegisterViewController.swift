@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 @IBDesignable
 class RegisterViewController: UIViewController {
     
@@ -35,17 +36,20 @@ class RegisterViewController: UIViewController {
 //        passwordTextField.text?.rangeOfString("^[A-Za-z0-9]{6,20}+$", options: .RegularExpressionSearch, range: nil, locale: nil)
         //账号密码注册
         guard let account:String = accountTextField.text where account.characters.count >= 4 else{
-            AlertView.showAlert(alertMessage: "帐号太短啦", alertDelegate: nil)
+            let alertView = UIAlertView(title: nil, message: "帐号太短啦", delegate: nil, cancelButtonTitle: "我知道了")
+            alertView.show()
             return
         }
         
         guard let password:String = passwordTextField.text where (password.rangeOfString("^[A-Za-z0-9]{6,20}+$", options: .RegularExpressionSearch, range: nil, locale: nil) != nil) else{
-            AlertView.showAlert(alertMessage: "密码长度6~20咯", alertDelegate: nil)
+            let alertView = UIAlertView(title: nil, message: "密码长度6~20咯", delegate: nil, cancelButtonTitle: "我知道了")
+            alertView.show()
             return
         }
         
         guard let confirm:String = confirmTextField.text where password == confirm else{
-            AlertView.showAlert(alertMessage: "两组密码完全不一致啊 0_0", alertDelegate: nil)
+            let alertView = UIAlertView(title: nil, message: "两组密码完全不一致啊 0_0", delegate: nil, cancelButtonTitle: "我知道了")
+            alertView.show()
             return
         }
         
@@ -66,12 +70,25 @@ class RegisterViewController: UIViewController {
             self.activityIndicatorView?.stopAnimating()
             
             if success{
-                //载入
-                let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-                let sexViewController = storyboard.instantiateViewControllerWithIdentifier("sexviewcontroller")
-                self.showViewController(sexViewController, sender: nil)
+                
+                do{
+                    //储存到本地
+                    let description = NSEntityDescription.entityForName("UserCD", inManagedObjectContext: context)
+                    myUser = User(entity: description!, insertIntoManagedObjectContext: context)
+                    myUser?.userid = Int32(result!["userid"]!)!
+                    myUser?.tokenid = result!["tokenid"]
+                    try context.save()
+                }catch let error{
+                    print("CoreData本地储存userid,tokenid出错:\(error)")
+                }
+                
+                //载入性别选择
+                let sexViewController = mainStoryboard.instantiateViewControllerWithIdentifier("sexviewcontroller")
+                self.showViewController(sexViewController, sender: self)
             }else{
-                AlertView.showAlert(alertMessage: reason!, alertDelegate: nil)
+                
+                let alertView = UIAlertView(title: nil, message: reason!, delegate: nil, cancelButtonTitle: "我知道了")
+                alertView.show()
             }
         }
         

@@ -19,7 +19,7 @@ class Session{
             let requestData=try NSJSONSerialization.dataWithJSONObject(body, options: NSJSONWritingOptions.PrettyPrinted)
             let requestStr = String(data: requestData, encoding: NSUTF8StringEncoding)!
             
-            let urlStr = homehost + action
+            let urlStr = workhost + action
             let url = NSURL(string: urlStr)
             let request = NSMutableURLRequest(URL: url!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData, timeoutInterval: 120)
             request.HTTPMethod = "POST"
@@ -30,40 +30,44 @@ class Session{
                 
                 data, response, error in
                 
-                guard error == nil else{
-                    closure(success: false, result: nil, reason: "连接错误")
-                    return
-                }
-                
-                do{
-                    guard let result:NSDictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary else{
-                        closure(success: false, result: nil, reason: "数据错误")
+                //切换到主线程
+                dispatch_async(dispatch_get_main_queue()){
+                    guard error == nil else{
+                        closure(success: false, result: nil, reason: "连接错误")
                         return
                     }
                     
-                    /*
-                     通过response["result"]判断后台返回数据是否合法
-                     result == 1 ------true
-                     result == 0 ------false
-                    */
-                    
-                    if result["result"] as! Bool{
-                        
-                        var swiftResult = [String:String]()
-                        for element in result["data"] as! NSDictionary{
-                            swiftResult[String(element.key)] = String(element.value)
+                    do{
+                        guard let result = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? [String:AnyObject] else{
+                            closure(success: false, result: nil, reason: "数据错误")
+                            return
                         }
-                        print("url session data: result = \(swiftResult)")
                         
-                        closure(success: true, result: swiftResult, reason: nil)
-                    }else{
-                        closure(success: false, result: nil, reason: result["reason"] as? String)
-                        print("url session data: reason = \(result["reason"] as? String)")
+                        /*
+                         通过response["result"]判断后台返回数据是否合法
+                         result == 1 ------true
+                         result == 0 ------false
+                         */
+                    
+                        if result["result"] as! Bool{
+                            
+                            var swiftResult = [String:String]()
+                            for (key,value) in result["data"] as! [String:AnyObject]{
+                                swiftResult[key] = String(value)
+                            }
+                            print("url session data: result = \(swiftResult)")
+                            
+                            closure(success: true, result: swiftResult, reason: nil)
+                        }else{
+                            closure(success: false, result: nil, reason: String(result["reason"]!))
+                            print("url session data: reason = \(String(result["reason"]!))")
+                        }
+                        
+                        
+                        
+                    }catch let responseError{
+                        print("response数据处理错误: \(responseError)")
                     }
-                    
-                    
-                }catch let responseError{
-                    print("response数据处理错误: \(responseError)")
                 }
             }
             

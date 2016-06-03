@@ -58,12 +58,14 @@ class MainViewController: UIViewController {
         }else{
             
             guard let account:String = accountTextField.text where !account.characters.isEmpty else{
-                AlertView.showAlert(alertMessage: "要输入帐号 0_0", alertDelegate: nil)
+                let alertView = UIAlertView(title: nil, message: "要输入帐号 0_0", delegate: nil, cancelButtonTitle: "我知道了")
+                alertView.show()
                 return
             }
             
             guard let password:String = passwordTextField.text where !password.characters.isEmpty else{
-                AlertView.showAlert(alertMessage: "要输入密码 0_0", alertDelegate: nil)
+                let alertView = UIAlertView(title: nil, message: "要输入密码 0_0", delegate: nil, cancelButtonTitle: "我知道了")
+                alertView.show()
                 return
             }
             
@@ -86,13 +88,13 @@ class MainViewController: UIViewController {
                 
                 if success{
                    //载入
-                    let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-                    let mainTabBar = storyboard.instantiateViewControllerWithIdentifier("maintabbar")
+                    let mainTabBar = mainStoryboard.instantiateViewControllerWithIdentifier("maintabbar")
                     self.showViewController(mainTabBar, sender: nil)
                     
                 }else{
                    
-                    AlertView.showAlert(alertMessage: reason!, alertDelegate: nil)
+                    let alertView = UIAlertView(title: nil, message: reason!, delegate: nil, cancelButtonTitle: "我知道了")
+                    alertView.show()
                 }
             }
         }

@@ -10,14 +10,7 @@ import Foundation
 import UIKit
 
 class AlertView: NSObject {
-    //MARK:提示框
-    class func showAlert(alertMessage message:String,alertDelegate delegate:UIAlertViewDelegate?){
-        
-        let alertView = UIAlertView(title: nil, message: message, delegate: delegate, cancelButtonTitle: "我知道了")
-        alertView.show()
-        
-    }
-    
+   
     //MARK:验证帐号密码 提示框
     func showReloginAlert(){
         let alertView = UIAlertView(title: "登陆信息已过期", message: "请重新登陆", delegate: self, cancelButtonTitle: nil, otherButtonTitles: "稍后", "登陆")
@@ -50,10 +43,12 @@ extension AlertView: UIAlertViewDelegate{
             Session.session(Action.login, body: body){
                 success, result, reason in
                 if success{
-                    AlertView.showAlert(alertMessage: "验证登陆信息成功", alertDelegate: nil)
+                    let alertView = UIAlertView(title: nil, message: "验证登陆信息成功", delegate: nil, cancelButtonTitle: "我知道了")
+                    alertView.show()
                     
                 }else{
-                    AlertView.showAlert(alertMessage: "验证登陆信息失败", alertDelegate: nil)
+                    let alertView = UIAlertView(title: nil, message: "验证登陆信息失败", delegate: nil, cancelButtonTitle: "我知道了")
+                    alertView.show()
                 }
             }
         default:

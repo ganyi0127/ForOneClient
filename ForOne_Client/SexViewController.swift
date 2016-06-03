@@ -9,10 +9,16 @@
 import UIKit
 import CoreData
 
+@IBDesignable
 class SexViewController: UIViewController {
+    
+    @IBInspectable @IBOutlet weak var boyButton: UIButton!
+    @IBInspectable @IBOutlet weak var girlButton: UIButton!
     
     override func viewDidLoad() {
         
+        boyButton.layer.cornerRadius = boyButton.frame.size.width / 2
+        girlButton.layer.cornerRadius = girlButton.frame.size.width / 2
     }
     @IBAction func choiceSex(sender: UIButton) {
         var sex = ""
@@ -21,48 +27,18 @@ class SexViewController: UIViewController {
         }else{
             sex = "女"
         }
-        
-        //纪录到coredata中
-        let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-        //找到实体结构，并生成一个实体对象
-        let row = NSEntityDescription.insertNewObjectForEntityForName("user", inManagedObjectContext: context)
-        row.setValue(sex, forKey: "sex")
+
         do{
+            //更新
+            myUser?.sex = sex
             try context.save()
-        }catch let e{
-            print(e)
+        }catch let error{
+            print("CoreData保存性别出错:\(error)")
         }
         
+        //载入照片选择
+        let photoViewController = mainStoryboard.instantiateViewControllerWithIdentifier("photoviewcontroller")
+        showViewController(photoViewController, sender: self)
         
-        //selectAll
-        //构造查询对象
-        let request = NSFetchRequest(entityName: "user")
-//        let userDescription = NSEntityDescription.entityForName("user", inManagedObjectContext: context)
-//        request.entity = userDescription
-        do{
-            
-            let result = try context.executeFetchRequest(request)
-            if !result.isEmpty {
-                print(result)
-            }
-            try context.save()
-        }catch let e{
-            print(e)
-        }
-        
-    
-        let predicate = NSPredicate(format: "userid=1", 1)
-        request.predicate = predicate
-        do{
-            
-            let result = try context.executeFetchRequest(request)
-            print(result)
-            for obj in result {
-                context.deleteObject(obj as! NSManagedObject)
-            }
-            try context.save()
-        }catch let e{
-            print(e)
-        }
     }
 }

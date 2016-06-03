@@ -1,28 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15A279b" minimumToolsVersion="Automatic">
-    <entity name="UserCD" representedClassName=".User" syncable="YES">
-        <attribute name="age" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="bloodtype" optional="YES" attributeType="String" syncable="YES"/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15F34" minimumToolsVersion="Automatic">
+    <entity name="UserCD" representedClassName=".User" isAbstract="YES" syncable="YES">
+        <attribute name="age" optional="YES" attributeType="Integer 32" defaultValueString="0" elementID="年龄" syncable="YES"/>
+        <attribute name="bloodtype" optional="YES" attributeType="String" elementID="血型" syncable="YES"/>
         <attribute name="constellation" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="height" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="nickname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nickname" optional="YES" attributeType="String" elementID="昵称" syncable="YES"/>
         <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="personality" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sex" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="telephone" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="tokenid" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="tokenid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userid" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="weight" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <fetchedProperty name="selfinfo" optional="YES" syncable="YES">
-            <fetchRequest name="fetchedPropertyFetchRequest" entity="UserCD" predicateString="userid != 0 &amp;&amp; tokenid != 0"/>
-            <userInfo>
-                <entry key="key" value="value"/>
-            </userInfo>
-        </fetchedProperty>
     </entity>
+    <fetchRequest name="FetchMe" entity="UserCD" predicateString="tokenid != &quot;&quot;"/>
     <elements>
-        <element name="UserCD" positionX="-9081" positionY="5877" width="162" height="281"/>
+        <element name="UserCD" positionX="-9081" positionY="5877" width="144" height="253"/>
     </elements>
 </model>
