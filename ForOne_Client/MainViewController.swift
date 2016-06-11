@@ -58,14 +58,18 @@ class MainViewController: UIViewController {
         }else{
             
             guard let account:String = accountTextField.text where !account.characters.isEmpty else{
-                let alertView = UIAlertView(title: nil, message: "要输入帐号 0_0", delegate: nil, cancelButtonTitle: "我知道了")
-                alertView.show()
+                let alertController = UIAlertController(title: nil, message: "要输入帐号 0_0", preferredStyle: .Alert)
+                let cancelAction = UIAlertAction(title: "我知道了", style: .Cancel, handler: nil)
+                alertController.addAction(cancelAction)
+                presentViewController(alertController, animated: true, completion: nil)
                 return
             }
             
             guard let password:String = passwordTextField.text where !password.characters.isEmpty else{
-                let alertView = UIAlertView(title: nil, message: "要输入密码 0_0", delegate: nil, cancelButtonTitle: "我知道了")
-                alertView.show()
+                let alertController = UIAlertController(title: nil, message: "要输入密码 0_0", preferredStyle: .Alert)
+                let cancelAction = UIAlertAction(title: "我知道了", style: .Cancel, handler: nil)
+                alertController.addAction(cancelAction)
+                presentViewController(alertController, animated: true, completion: nil)
                 return
             }
             
@@ -93,8 +97,10 @@ class MainViewController: UIViewController {
                     
                 }else{
                    
-                    let alertView = UIAlertView(title: nil, message: reason!, delegate: nil, cancelButtonTitle: "我知道了")
-                    alertView.show()
+                    let alertController = UIAlertController(title: nil, message: reason!, preferredStyle: .Alert)
+                    let cancelAction = UIAlertAction(title: "我知道了", style: .Cancel, handler: nil)
+                    alertController.addAction(cancelAction)
+                    self.presentViewController(alertController, animated: true, completion: nil)
                 }
             }
         }
