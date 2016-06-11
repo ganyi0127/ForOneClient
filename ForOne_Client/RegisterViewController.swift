@@ -33,7 +33,7 @@ class RegisterViewController: UIViewController {
         
         accountTextField.endEditing(true)
         passwordTextField.endEditing(true)
-//        passwordTextField.text?.rangeOfString("^[A-Za-z0-9]{6,20}+$", options: .RegularExpressionSearch, range: nil, locale: nil)
+
         //账号密码注册
         guard let account:String = accountTextField.text where account.characters.count >= 4 else{
             let alertView = UIAlertView(title: nil, message: "帐号太短啦", delegate: nil, cancelButtonTitle: "我知道了")

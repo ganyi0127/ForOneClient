@@ -20,8 +20,10 @@ let mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
 
 //host
 let homehost = "http://192.168.1.101:8080"
-let nethost = "http://127.0.0.1:8080"
+let localhost = "http://127.0.0.1:8080"
 let workhost = "http://192.168.1.127:8080"
+
+let host = localhost
 
 //actions--HTTP
 struct Action{

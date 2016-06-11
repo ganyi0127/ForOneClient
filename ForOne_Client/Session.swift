@@ -19,7 +19,7 @@ class Session{
             let requestData=try NSJSONSerialization.dataWithJSONObject(body, options: NSJSONWritingOptions.PrettyPrinted)
             let requestStr = String(data: requestData, encoding: NSUTF8StringEncoding)!
             
-            let urlStr = workhost + action
+            let urlStr = host + action
             let url = NSURL(string: urlStr)
             let request = NSMutableURLRequest(URL: url!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData, timeoutInterval: 120)
             request.HTTPMethod = "POST"
@@ -79,7 +79,7 @@ class Session{
     
     class func upload(image:UIImage, closure:(success:Bool) -> ()){
         
-        let urlStr = homehost + "/use/head"
+        let urlStr = host + "/use/head"
         let url = NSURL(string: urlStr)
         let request = NSMutableURLRequest(URL: url!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData, timeoutInterval: 120)
         request.addValue("image/png", forHTTPHeaderField: "Content-Type")

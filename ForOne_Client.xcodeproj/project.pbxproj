@@ -23,6 +23,7 @@
 		322409691D0111F400F9E66E /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322409671D0111F400F9E66E /* User+CoreDataProperties.swift */; };
 		3224096A1D0111F400F9E66E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322409681D0111F400F9E66E /* User.swift */; };
 		3224096C1D01694300F9E66E /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3224096B1D01694300F9E66E /* PhotoViewController.swift */; };
+		3242539A1D0BD89B00A81001 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324253991D0BD89B00A81001 /* InfoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		322409671D0111F400F9E66E /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		322409681D0111F400F9E66E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3224096B1D01694300F9E66E /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
+		324253991D0BD89B00A81001 /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +174,7 @@
 				3224095D1CFE7A7E00F9E66E /* RegisterViewController.swift */,
 				322409611D00229E00F9E66E /* SexViewController.swift */,
 				3224096B1D01694300F9E66E /* PhotoViewController.swift */,
+				324253991D0BD89B00A81001 /* InfoViewController.swift */,
 			);
 			name = "注册页";
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				049DD9131CFDD26B005BBD73 /* AppDelegate.swift in Sources */,
 				3224096A1D0111F400F9E66E /* User.swift in Sources */,
 				322409691D0111F400F9E66E /* User+CoreDataProperties.swift in Sources */,
+				3242539A1D0BD89B00A81001 /* InfoViewController.swift in Sources */,
 				3224096C1D01694300F9E66E /* PhotoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
