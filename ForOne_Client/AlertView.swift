@@ -16,6 +16,7 @@ class AlertView: NSObject {
         let alertView = UIAlertView(title: "登陆信息已过期", message: "请重新登陆", delegate: self, cancelButtonTitle: nil, otherButtonTitles: "稍后", "登陆")
         alertView.alertViewStyle = .LoginAndPasswordInput
         alertView.show()
+        
     }
     
     //MARK:创建一个loading视图，并返回

@@ -19,9 +19,9 @@ class Session{
             let requestData=try NSJSONSerialization.dataWithJSONObject(body, options: NSJSONWritingOptions.PrettyPrinted)
             let requestStr = String(data: requestData, encoding: NSUTF8StringEncoding)!
             
-            let urlStr = workhost + action
+            let urlStr = homehost + action
             let url = NSURL(string: urlStr)
-            let request = NSMutableURLRequest(URL: url!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData, timeoutInterval: 120)
+            let request = NSMutableURLRequest(URL: url!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData, timeoutInterval: 10)
             request.HTTPMethod = "POST"
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.HTTPBody = requestStr.dataUsingEncoding(NSUTF8StringEncoding)
