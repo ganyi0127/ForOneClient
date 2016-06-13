@@ -713,11 +713,18 @@
                             <outlet property="delegate" destination="Lqi-6R-I6j" id="N97-93-Eg4"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="个人信息" id="qLO-GJ-nXO"/>
+                    <navigationItem key="navigationItem" title="个人信息" id="qLO-GJ-nXO">
+                        <barButtonItem key="rightBarButtonItem" title="完成" id="P8A-bU-9fC">
+                            <connections>
+                                <action selector="finish:" destination="Lqi-6R-I6j" id="obM-cj-Nsw"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="ageLabel" destination="aVv-fW-iti" id="mQ1-H7-waY"/>
                         <outlet property="bloodtypeLabel" destination="DeL-WF-Tz0" id="0gk-4F-iPB"/>
                         <outlet property="constellationLabel" destination="sPc-Aj-Ikz" id="a3N-bq-6j2"/>
+                        <outlet property="finishButton" destination="P8A-bU-9fC" id="z4Q-wc-YiA"/>
                         <outlet property="heightLabel" destination="VY1-8c-gG7" id="xPM-Di-fY0"/>
                         <outlet property="locationLabel" destination="LM7-C3-uXS" id="3eU-nt-u7F"/>
                         <outlet property="nameLabel" destination="hFh-pv-o8D" id="ErJ-qb-9HI"/>
@@ -1015,25 +1022,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell" selectionStyle="none" indentationWidth="10" textLabel="DsM-wP-bFn" style="IBUITableViewCellStyleDefault" id="gcV-f1-WlT">
-                                <rect key="frame" x="0.0" y="49.5" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gcV-f1-WlT" id="paP-Lg-i5X">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DsM-wP-bFn">
-                                            <rect key="frame" x="15" y="0.0" width="570" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
                         <sections/>
                         <connections>
                             <outlet property="dataSource" destination="pPU-3K-BHh" id="t04-Gj-o9t"/>
@@ -1047,6 +1035,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j8p-lH-TZg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3473" y="-1409"/>
+        </scene>
+        <!--身高-->
+        <scene sceneID="97A-N8-yng">
+            <objects>
+                <tableViewController storyboardIdentifier="heighttableviewcontroller" id="mbP-gl-por" customClass="HeightTableViewController" customModule="ForOne_Client" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="ldK-MS-rbN">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="mbP-gl-por" id="gAE-xq-sDb"/>
+                            <outlet property="delegate" destination="mbP-gl-por" id="GP8-pe-Tlb"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="身高" id="jxv-6W-VsK"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fha-RP-RQs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3473" y="-633"/>
+        </scene>
+        <!--City Table View Controller-->
+        <scene sceneID="K4T-xq-R5t">
+            <objects>
+                <tableViewController storyboardIdentifier="citytableviewcontroller" id="fVd-Oe-2UZ" customClass="CityTableViewController" customModule="ForOne_Client" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="uKm-U3-zsR">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="fVd-Oe-2UZ" id="xe6-Ij-dat"/>
+                            <outlet property="delegate" destination="fVd-Oe-2UZ" id="65A-f8-XXw"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3MB-j4-RLw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4285" y="-1409"/>
         </scene>
     </scenes>
 </document>

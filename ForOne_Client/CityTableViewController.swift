@@ -1,5 +1,5 @@
 //
-//  LocationTableViewController.swift
+//  CityTableViewController.swift
 //  ForOne_Client
 //
 //  Created by YiGan on 16/6/12.
@@ -8,15 +8,20 @@
 
 import Foundation
 import UIKit
-class LocationTableViewController: UITableViewController  {
+class CityTableViewController: UITableViewController {
     
-    private let data = PlistSource.getCity()
+    var data:(String,[String])?
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
     override func viewDidLoad() {
         
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return data!.1.count
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -24,20 +29,30 @@ class LocationTableViewController: UITableViewController  {
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "省份"
+        return data!.0
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let identifier = "\(indexPath.section)_\(indexPath.row)"
         let cell = UITableViewCell(style: .Default, reuseIdentifier: identifier)
-        cell.textLabel?.text = data[indexPath.row].0
+        cell.textLabel?.text = data?.1[indexPath.row]
         return cell
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        let cityTableViewController = mainStoryboard.instantiateViewControllerWithIdentifier("citytableviewcontroller") as! CityTableViewController
-        cityTableViewController.data = data[indexPath.row]
-        navigationController?.pushViewController(cityTableViewController, animated: true)
+        do{
+            myUser?.location = "\(data!.0)/\(data!.1[indexPath.row])"
+            try context.save()
+            navigationController?.popViewControllerAnimated(true)
+            for viewController in navigationController!.viewControllers {
+                if viewController.isKindOfClass(InfoTableViewController) {
+                    
+                    navigationController?.popToViewController(viewController, animated: false)
+                }
+            }
+        }catch let error{
+            print("CoreData保存位置错误: \(error)")
+        }
     }
 }

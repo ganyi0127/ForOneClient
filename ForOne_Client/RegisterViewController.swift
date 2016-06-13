@@ -70,7 +70,7 @@ class RegisterViewController: UIViewController {
         var body = [String:String]()
         body["username"] = account
         body["password"] = password
-        Session.session("/register", body: body){
+        Session.session(Action.register, body: body){
             success, result, reason in
             
             self.activityIndicatorView?.stopAnimating()
@@ -90,8 +90,8 @@ class RegisterViewController: UIViewController {
                 }
                 
                 //载入性别选择
-                let sexViewController = mainStoryboard.instantiateViewControllerWithIdentifier("registernavigation")
-                self.showViewController(sexViewController, sender: self)
+                let navigationController = mainStoryboard.instantiateViewControllerWithIdentifier("registernavigation")
+                self.showViewController(navigationController, sender: self)
 
             }else{
                 

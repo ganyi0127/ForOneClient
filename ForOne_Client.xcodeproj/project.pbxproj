@@ -28,6 +28,9 @@
 		324253A91D0C758900A81001 /* City.plist in Resources */ = {isa = PBXBuildFile; fileRef = 324253A81D0C758900A81001 /* City.plist */; };
 		324253AB1D0C7C9B00A81001 /* PlistSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324253AA1D0C7C9A00A81001 /* PlistSource.swift */; };
 		324253AD1D0C80F200A81001 /* LocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324253AC1D0C80F200A81001 /* LocationTableViewController.swift */; };
+		324253AF1D0D9CE500A81001 /* CityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324253AE1D0D9CE500A81001 /* CityTableViewController.swift */; };
+		324253B31D0DA41900A81001 /* HeightTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324253B21D0DA41900A81001 /* HeightTableViewController.swift */; };
+		324253B51D0DB9E900A81001 /* WeightTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324253B41D0DB9E900A81001 /* WeightTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +78,9 @@
 		324253A81D0C758900A81001 /* City.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = City.plist; sourceTree = "<group>"; };
 		324253AA1D0C7C9A00A81001 /* PlistSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlistSource.swift; sourceTree = "<group>"; };
 		324253AC1D0C80F200A81001 /* LocationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTableViewController.swift; sourceTree = "<group>"; };
+		324253AE1D0D9CE500A81001 /* CityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityTableViewController.swift; sourceTree = "<group>"; };
+		324253B21D0DA41900A81001 /* HeightTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeightTableViewController.swift; sourceTree = "<group>"; };
+		324253B41D0DB9E900A81001 /* WeightTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeightTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +200,9 @@
 			children = (
 				324253A31D0C4EAC00A81001 /* NameTableViewController.swift */,
 				324253AC1D0C80F200A81001 /* LocationTableViewController.swift */,
+				324253AE1D0D9CE500A81001 /* CityTableViewController.swift */,
+				324253B21D0DA41900A81001 /* HeightTableViewController.swift */,
+				324253B41D0DB9E900A81001 /* WeightTableViewController.swift */,
 			);
 			name = "个人信息填写";
 			sourceTree = "<group>";
@@ -342,12 +351,14 @@
 			files = (
 				324253A41D0C4EAC00A81001 /* NameTableViewController.swift in Sources */,
 				049DD9451CFDE74C005BBD73 /* Session.swift in Sources */,
+				324253B31D0DA41900A81001 /* HeightTableViewController.swift in Sources */,
 				322409621D00229E00F9E66E /* SexViewController.swift in Sources */,
 				324253AB1D0C7C9B00A81001 /* PlistSource.swift in Sources */,
 				3224095E1CFE7A7E00F9E66E /* RegisterViewController.swift in Sources */,
 				324253A11D0C37E500A81001 /* InfoTableViewController.swift in Sources */,
 				049DD9471CFF2976005BBD73 /* AlertView.swift in Sources */,
 				322409601CFEE35100F9E66E /* Configure.swift in Sources */,
+				324253AF1D0D9CE500A81001 /* CityTableViewController.swift in Sources */,
 				324253AD1D0C80F200A81001 /* LocationTableViewController.swift in Sources */,
 				049DD9151CFDD26B005BBD73 /* MainViewController.swift in Sources */,
 				049DD91B1CFDD26B005BBD73 /* ForOne_Client.xcdatamodeld in Sources */,
@@ -355,6 +366,7 @@
 				3224096A1D0111F400F9E66E /* User.swift in Sources */,
 				322409691D0111F400F9E66E /* User+CoreDataProperties.swift in Sources */,
 				3224096C1D01694300F9E66E /* PhotoViewController.swift in Sources */,
+				324253B51D0DB9E900A81001 /* WeightTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

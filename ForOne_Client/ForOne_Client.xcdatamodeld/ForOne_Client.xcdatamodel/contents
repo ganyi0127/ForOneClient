@@ -18,6 +18,6 @@
     </entity>
     <fetchRequest name="FetchMe" entity="UserCD" predicateString="tokenid != &quot;&quot;"/>
     <elements>
-        <element name="UserCD" positionX="-9081" positionY="5877" width="144" height="253"/>
+        <element name="UserCD" positionX="-9081" positionY="5877" width="144" height="255"/>
     </elements>
 </model>

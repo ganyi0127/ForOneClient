@@ -91,7 +91,7 @@ class MainViewController: UIViewController {
                 self.activityIndicatorView?.stopAnimating()
                 
                 if success{
-                   //载入
+                    //载入
                     let mainTabBar = mainStoryboard.instantiateViewControllerWithIdentifier("maintabbar")
                     self.showViewController(mainTabBar, sender: nil)
                     

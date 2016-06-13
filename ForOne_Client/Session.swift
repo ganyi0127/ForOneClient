@@ -13,7 +13,7 @@ import UIKit
 
 class Session{
     
-    class func session(action:String = "",body:[String:String],closure: (success:Bool, result:[String:String]? , reason:String?) -> ()) {
+    class func session(action:String = "",body:[String:AnyObject],closure: (success:Bool, result:[String:String]? , reason:String?) -> ()) {
         
         do{
             let requestData=try NSJSONSerialization.dataWithJSONObject(body, options: NSJSONWritingOptions.PrettyPrinted)
@@ -49,6 +49,7 @@ class Session{
                          result == 1 ------true
                          result == 0 ------false
                          */
+                        print("返回:\(result)")
                     
                         if result["result"] as! Bool{
                             
@@ -95,7 +96,7 @@ class Session{
             
             dispatch_async(dispatch_get_main_queue()){
                 
-                guard error != nil else{
+                guard error == nil else{
                     closure(success: false)
                     return
                 }

@@ -14,6 +14,7 @@ class NameTableViewController: UITableViewController {
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
     override func viewDidLoad() {
+        nameTextField.text = myUser?.nickname
         saveButton.tintColor = lightColor
     }
     //MARK:保存
@@ -55,19 +56,22 @@ extension NameTableViewController:UITextFieldDelegate{
     }
     
     @IBAction func editingChanged(sender: UITextField) {
-        guard let text:String = sender.text else{
+        guard let _:String = sender.text else{
             return
         }
         
-        let existedLength = text.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
-        
-        if existedLength > 0 {
-            saveButton.tintColor = darkColor
-        }else{
+        if sender.text == myUser?.nickname {
             saveButton.tintColor = lightColor
+        }else{
+            saveButton.tintColor = darkColor
         }
-        if text.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 10{
-            sender.text = text.substringToIndex(text.startIndex.advancedBy(10))
+        
+        if sender.text?.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 32{
+            while sender.text!.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 32 {
+                
+                let range = Range(sender.text!.startIndex..<sender.text!.endIndex.advancedBy(-1))
+                sender.text = sender.text!.substringWithRange(range)
+            }
         }
     }
 }
