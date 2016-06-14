@@ -19,11 +19,11 @@ var myUser:User?
 let mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
 
 //host
-let homehost = "http://192.168.1.101:8080"
+let homehost = "http://192.168.1.100:8080"
 let localhost = "http://127.0.0.1:8080"
 let workhost = "http://192.168.1.127:8080"
 
-let host = localhost
+let host = homehost
 
 //actions--HTTP
 struct Action{
@@ -31,6 +31,8 @@ struct Action{
     static let login = "/login"
     static let getInfo = "/getinfo"
     static let setInfo = "/setinfo"
+    static let getPhoto = "/getphoto"
+    static let setPhoto = "/setphoto"
 }
 
 //男生女生颜色

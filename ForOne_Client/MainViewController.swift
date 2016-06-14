@@ -24,7 +24,6 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
        
         config()
-        
     }
 
     override func didReceiveMemoryWarning() {

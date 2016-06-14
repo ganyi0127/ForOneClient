@@ -144,7 +144,7 @@ class PhotoViewController: UIViewController {
         }
         
         //上传头像
-        Session.upload(image){
+        Session.upload(image,userid: myUser!.userid){
             success in
             if success{
                 //上传成功

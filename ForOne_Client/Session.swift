@@ -79,46 +79,89 @@ class Session{
         }
     }
     
-    class func upload(image:UIImage, closure:(success:Bool) -> ()){
+    class func upload(image:UIImage, userid:Int32, closure:(success:Bool) -> ()){
         
-        let urlStr = host + "/use/head"
-        let url = NSURL(string: urlStr)
-        let request = NSMutableURLRequest(URL: url!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData, timeoutInterval: 120)
-        request.addValue("image/png", forHTTPHeaderField: "Content-Type")
-        request.addValue("text/html", forHTTPHeaderField: "Content-Type")
-        request.HTTPMethod = "POST"
+        //拼接字符串
+        let boundaryStr = "--"
+        let randomIDStr = "----------foronephoto---------"
+        let uploadID = "uploadFile"
         
-        let imageData = UIImagePNGRepresentation(image)
+        func topStringWithMimeType(mimeType:String,uploadFile:String) -> String{
+            let strM = NSMutableString()
+            strM.appendString("\(boundaryStr)\(randomIDStr)\n")
+            strM.appendString("Content-Disposition: form-data; name=\"\(uploadID)\"; filename=\"\(uploadFile)\"\n")
+            strM.appendString("Content-Type: \(mimeType)\n\n")
+            return strM as String
+        }
         
-        let session = NSURLSession.sharedSession()
-        let task = session.uploadTaskWithRequest(request, fromData: imageData!){
-            data,response,error in
+        func bottomString() -> String{
+            let strM = NSMutableString()
+            strM.appendString("\(boundaryStr)\(randomIDStr)\n")
+            strM.appendString("Content-Disposition: form-data; name=\"submit\"\n\n")
+            strM.appendString("Submit\n")
+            strM.appendString("\(boundaryStr)\(randomIDStr)--\n")
+            return strM as String
+        }
+        
+        do{
+            let data = UIImagePNGRepresentation(image)!
             
-            dispatch_async(dispatch_get_main_queue()){
+            //1.数据体
+            let topStr:NSString = topStringWithMimeType("image/png", uploadFile: "fo\(userid).png")
+            let bottomStr:NSString = bottomString()
+            
+            let dataM = NSMutableData()
+            dataM.appendData(topStr.dataUsingEncoding(NSUTF8StringEncoding)!)
+            dataM.appendData(data)
+            dataM.appendData(bottomStr.dataUsingEncoding(NSUTF8StringEncoding)!)
+            
+            //2.Request
+            let urlStr = host + Action.setPhoto
+            let url = NSURL(string: urlStr)
+            
+            let request = NSMutableURLRequest(URL: url!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData, timeoutInterval: 2.0)
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.HTTPMethod = "POST"
+            request.HTTPBody = dataM
+            
+            let strLength = "\(data.length)"
+            request.setValue(strLength, forHTTPHeaderField: "Content-Length")
+            
+            let strContentType = "multipart/form-data; boundary=\(randomIDStr)"
+            request.setValue(strContentType, forHTTPHeaderField: "Content-Type")
+            
+            let session = NSURLSession.sharedSession()
+            let task = session.dataTaskWithRequest(request){
+                data,response,error in
                 
-                guard error == nil else{
-                    closure(success: false)
-                    return
-                }
-                
-                do{
-                    guard let result:NSDictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary else{
+                dispatch_async(dispatch_get_main_queue()){
+                    
+                    guard error == nil else{
                         closure(success: false)
                         return
                     }
-                    print("result: \(result)")
-                    var response = [String:String]()
-                    for element in result{
-                        response[element.key as! String] = element.value as? String
+                    
+                    do{
+                        guard let result:NSDictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary else{
+                            closure(success: false)
+                            return
+                        }
+                        print("result: \(result)")
+                        var response = [String:String]()
+                        for element in result{
+                            response[element.key as! String] = element.value as? String
+                        }
+                        
+                        closure(success: true)
+                        
+                    }catch let responseError{
+                        print("response数据处理错误: \(responseError)")
                     }
-                    
-                    closure(success: true)
-                    
-                }catch let responseError{
-                    print("response数据处理错误: \(responseError)")
                 }
             }
+            task.resume()
+        }catch let error{
+            print("request数据处理错误: \(error)")
         }
-        task.resume()
     }
 }
