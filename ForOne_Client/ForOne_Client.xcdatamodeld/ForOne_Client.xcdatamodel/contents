@@ -4,6 +4,7 @@
         <attribute name="age" optional="YES" attributeType="Integer 32" defaultValueString="0" elementID="年龄" syncable="YES"/>
         <attribute name="bloodtype" optional="YES" attributeType="String" elementID="血型" syncable="YES"/>
         <attribute name="constellation" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="headphoto" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="height" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nickname" optional="YES" attributeType="String" elementID="昵称" syncable="YES"/>
@@ -18,6 +19,6 @@
     </entity>
     <fetchRequest name="FetchMe" entity="UserCD" predicateString="tokenid != &quot;&quot;"/>
     <elements>
-        <element name="UserCD" positionX="-9081" positionY="5877" width="144" height="255"/>
+        <element name="UserCD" positionX="-9081" positionY="5877" width="144" height="270"/>
     </elements>
 </model>

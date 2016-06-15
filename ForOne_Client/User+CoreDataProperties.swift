@@ -2,8 +2,8 @@
 //  User+CoreDataProperties.swift
 //  ForOne_Client
 //
-//  Created by ganyi on 16/6/3.
-//  Copyright © 2016年 gan. All rights reserved.
+//  Created by YiGan on 6/15/16.
+//  Copyright © 2016 gan. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
 //  to delete and recreate this implementation file for your updated model.
@@ -28,5 +28,6 @@ extension User {
     @NSManaged var userid: Int32
     @NSManaged var username: String?
     @NSManaged var weight: Int32
+    @NSManaged var headphoto: String?
 
 }

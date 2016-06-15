@@ -145,10 +145,25 @@ class PhotoViewController: UIViewController {
         
         //上传头像
         Session.upload(image,userid: myUser!.userid){
-            success in
+            success, result, reason in
             if success{
                 //上传成功
-                self.next()
+                do{
+                    myUser?.headphoto = result!["photoname"]
+                    try context.save()
+                    //上传成功提示
+                    let alertController = UIAlertController(title: "完成", message: "上传头像成功", preferredStyle: .Alert)
+                    let nextAction = UIAlertAction(title: "继续", style: .Default){
+                        action in
+                        self.next()
+                    }
+                    alertController.addAction(nextAction)
+                    self.presentViewController(alertController, animated: true){
+                        self.skipButton.hidden = true
+                    }
+                }catch let error{
+                    print("CoreData保存头像地址出错: \(error)")
+                }
             }else{
                 //上传失败
                 let alertController = UIAlertController(title: "未完成", message: "上传照片出错", preferredStyle: .Alert)
@@ -159,7 +174,6 @@ class PhotoViewController: UIViewController {
                 self.presentViewController(alertController, animated: true){
                     self.skipButton.hidden = false
                 }
-                
             }
         }
     }

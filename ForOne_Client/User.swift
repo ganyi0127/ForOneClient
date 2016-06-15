@@ -2,8 +2,8 @@
 //  User.swift
 //  ForOne_Client
 //
-//  Created by ganyi on 16/6/3.
-//  Copyright © 2016年 gan. All rights reserved.
+//  Created by YiGan on 6/15/16.
+//  Copyright © 2016 gan. All rights reserved.
 //
 
 import Foundation
@@ -12,11 +12,6 @@ import CoreData
 
 class User: NSManagedObject {
 
-    override func willSave() {
-        print("willSave!")
-    }
-    override func didSave() {
-        print("didSave!")
-    }
+// Insert code here to add functionality to your managed object subclass
 
 }
