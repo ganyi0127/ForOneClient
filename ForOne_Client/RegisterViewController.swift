@@ -76,7 +76,6 @@ class RegisterViewController: UIViewController {
             self.activityIndicatorView?.stopAnimating()
             
             if success{
-                
                 do{
                     //储存到本地
                     let description = NSEntityDescription.entityForName("UserCD", inManagedObjectContext: context)

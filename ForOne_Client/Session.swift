@@ -26,6 +26,7 @@ class Session{
             request.HTTPMethod = "POST"
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.HTTPBody = requestStr.dataUsingEncoding(NSUTF8StringEncoding)
+    
             let session = NSURLSession.sharedSession()
             let task = session.dataTaskWithRequest(request){
                 
@@ -104,6 +105,11 @@ class Session{
         }
         
         do{
+            
+            var params = [String: AnyObject]()
+            params["userid"] = Int(userid)
+            let paramsData = try NSJSONSerialization.dataWithJSONObject(params, options: NSJSONWritingOptions.PrettyPrinted)
+            
             let data = UIImagePNGRepresentation(image)!
             
             //1.数据体
@@ -122,16 +128,18 @@ class Session{
             let request = NSMutableURLRequest(URL: url!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData, timeoutInterval: 2.0)
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             request.HTTPMethod = "POST"
-            request.HTTPBody = dataM
+            request.HTTPBody = paramsData
+
+            request.addValue("image/png", forHTTPHeaderField: "Content-Type")
             
-            let strLength = "\(data.length)"
-            request.setValue(strLength, forHTTPHeaderField: "Content-Length")
-            
-            let strContentType = "multipart/form-data; boundary=\(randomIDStr)"
-            request.setValue(strContentType, forHTTPHeaderField: "Content-Type")
+//            let strLength = "\(data.length)"
+//            request.setValue(strLength, forHTTPHeaderField: "Content-Length")
+//            
+//            let strContentType = "multipart/form-data; boundary=\(randomIDStr)"
+//            request.setValue(strContentType, forHTTPHeaderField: "Content-Type")
             
             let session = NSURLSession.sharedSession()
-            let task = session.dataTaskWithRequest(request){
+            let task = session.uploadTaskWithRequest(request, fromData: dataM){
                 data,response,error in
                 
                 dispatch_async(dispatch_get_main_queue()){
