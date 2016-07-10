@@ -46,7 +46,7 @@ class CityTableViewController: UITableViewController {
             try context.save()
             navigationController?.popViewControllerAnimated(true)
             for viewController in navigationController!.viewControllers {
-                if viewController.isKindOfClass(InfoTableViewController) {
+                if viewController.isKindOfClass(ProfileViewController) {
                     
                     navigationController?.popToViewController(viewController, animated: false)
                 }

@@ -2,7 +2,7 @@
 //  User.swift
 //  ForOne_Client
 //
-//  Created by YiGan on 6/15/16.
+//  Created by YiGan on 7/10/16.
 //  Copyright © 2016 gan. All rights reserved.
 //
 

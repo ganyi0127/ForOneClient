@@ -2,7 +2,7 @@
 //  User+CoreDataProperties.swift
 //  ForOne_Client
 //
-//  Created by YiGan on 6/15/16.
+//  Created by YiGan on 7/10/16.
 //  Copyright © 2016 gan. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -17,6 +17,7 @@ extension User {
     @NSManaged var age: Int32
     @NSManaged var bloodtype: String?
     @NSManaged var constellation: String?
+    @NSManaged var headphoto: String?
     @NSManaged var height: Int32
     @NSManaged var location: String?
     @NSManaged var nickname: String?
@@ -28,6 +29,6 @@ extension User {
     @NSManaged var userid: Int32
     @NSManaged var username: String?
     @NSManaged var weight: Int32
-    @NSManaged var headphoto: String?
+    @NSManaged var biography: String?
 
 }

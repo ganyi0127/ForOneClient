@@ -1,29 +1,27 @@
 //
-//  WeightTableViewController.swift
+//  PhoneViewController.swift
 //  ForOne_Client
 //
-//  Created by YiGan on 16/6/12.
-//  Copyright © 2016年 gan. All rights reserved.
+//  Created by YiGan on 7/10/16.
+//  Copyright © 2016 gan. All rights reserved.
 //
 
 import UIKit
-
-class WeightTableViewController: UITableViewController {
-    
-    @IBOutlet weak var weightTextField: UITextField!
+class PhoneTableViewController: UITableViewController {
+    @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        weightTextField.text = "\(myUser?.weight)"
+        phoneTextField.text = "\(myUser?.telephone)"
         saveButton.tintColor = lightColor
 
     }
     
     @IBAction func save(sender: UIBarButtonItem) {
         
-        guard let text = weightTextField.text else{
+        guard let text = phoneTextField.text else{
             return
         }
         
@@ -32,23 +30,23 @@ class WeightTableViewController: UITableViewController {
             //判断是否为纯数字
             let noDigitText = text.stringByTrimmingCharactersInSet(NSCharacterSet.decimalDigitCharacterSet())
             guard noDigitText.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) == 0 else{
-                errorAlert("体重只能输入阿拉伯数字噢")
+                errorAlert("号码只能包含阿拉伯数字噢")
                 return
             }
             
-            //判断体重范围为 10~200
-            guard let weight = Int32(text) where weight > 10 && weight < 200 else{
-                errorAlert("要输入正确的体重范围噢")
+            //判断号码是否为11位
+            guard text.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) == 11 else{
+                errorAlert("号码长度需要为11位噢")
                 return
             }
             
             do{
-                myUser?.weight = weight
+                myUser?.telephone = text
                 try context.save()
                 
                 navigationController?.popViewControllerAnimated(true)
             }catch let error{
-                print("CoreData保存体重错误: \(error)")
+                print("CoreData保存电话错误: \(error)")
             }
         }
     }
@@ -62,7 +60,7 @@ class WeightTableViewController: UITableViewController {
     }
 }
 
-extension WeightTableViewController:UITextFieldDelegate{
+extension PhoneTableViewController:UITextFieldDelegate{
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         save(saveButton)
@@ -74,7 +72,7 @@ extension WeightTableViewController:UITextFieldDelegate{
         let existedLength = textField.text?.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
         let selectedLength = range.length
         let replaceLength = string.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
-        if existedLength! - selectedLength + replaceLength > 3{
+        if existedLength! - selectedLength + replaceLength > 11{
             return false
         }
         return true
@@ -91,9 +89,9 @@ extension WeightTableViewController:UITextFieldDelegate{
             saveButton.tintColor = darkColor
         }
         
-        if sender.text?.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 3{
-            while sender.text!.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 3 {
-
+        if sender.text?.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 11{
+            while sender.text!.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 11 {
+                
                 sender.text = sender.text![sender.text!.startIndex..<sender.text!.endIndex.advancedBy(-1)]
             }
         }

@@ -36,7 +36,7 @@ class LocationTableViewController: UITableViewController  {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        let cityTableViewController = mainStoryboard.instantiateViewControllerWithIdentifier("citytableviewcontroller") as! CityTableViewController
+        let cityTableViewController = CityTableViewController(style: .Grouped)
         cityTableViewController.data = data[indexPath.row]
         navigationController?.pushViewController(cityTableViewController, animated: true)
     }

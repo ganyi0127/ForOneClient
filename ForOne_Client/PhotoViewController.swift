@@ -185,8 +185,8 @@ class PhotoViewController: UIViewController {
     
     //MARK:载入信息填写
     private func next(){
-        let infoTableViewController = mainStoryboard.instantiateViewControllerWithIdentifier("infotableviewcontroller")
-        navigationController?.pushViewController(infoTableViewController, animated: true)    
+        let profileViewController = mainStoryboard.instantiateViewControllerWithIdentifier("profileviewcontroller")
+        navigationController?.pushViewController(profileViewController, animated: true)
     }
 }
 

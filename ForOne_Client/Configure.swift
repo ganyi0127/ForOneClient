@@ -11,19 +11,24 @@ import UIKit
 let NotifictionCenter = NSNotificationCenter.defaultCenter()
 let UserDefaults = NSUserDefaults.standardUserDefaults()
 
+//Size
+let ViewSize = UIScreen.mainScreen().bounds.size
+let StatusSize = UIApplication.sharedApplication().statusBarFrame.size
+
 //CoreData
 let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
 var myUser:User?
 
 //Storyboard
 let mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+let contentStoryboard = UIStoryboard(name: "Content", bundle: NSBundle.mainBundle())
 
 //host
 let homehost = "http://192.168.1.100:8080"
 let localhost = "http://127.0.0.1:8080"
 let workhost = "http://192.168.1.127:8080"
 
-let host = homehost
+let host = localhost
 
 //actions--HTTP
 struct Action{

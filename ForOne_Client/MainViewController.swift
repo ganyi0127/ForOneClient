@@ -24,11 +24,43 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
        
         config()
+        
+        //test3D
+//        let rotate = CATransform3DMakeRotation(CGFloat(M_PI_2) / 6, 1, 0, 0)
+//        view.layer.transform = CATransform3DPerspect(rotate, center: CGPoint(x: 0, y:0), disZ: 1000)
+//
+//        let anim = CABasicAnimation(keyPath: "position.x")
+//        anim.fromValue = 0
+//        anim.toValue = view.bounds.size.width
+//        anim.duration = 3
+//        anim.beginTime = CACurrentMediaTime() + 1
+//        anim.fillMode = kCAFillModeBoth
+//        anim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+//        view.layer.addAnimation(anim, forKey: nil)
+//
+//        view.layer.opacity = 1
+//        
+//        let keyAnim = CAKeyframeAnimation()
+//        keyAnim.duration = 3
+//        keyAnim.autoreverses = true
+//        keyAnim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+    
     }
-
+    
+    private func CATransform3DMakePerspective(center:CGPoint, disZ:CGFloat) -> CATransform3D{
+        let transToCenter = CATransform3DMakeTranslation(-center.x, -center.y, 0)
+        let transBack = CATransform3DMakeTranslation(0, 0, 0)
+        var scale = CATransform3DIdentity
+        scale.m34 = -1/disZ
+        return CATransform3DConcat(CATransform3DConcat(transToCenter, scale), transBack)
+    }
+    
+    private func CATransform3DPerspect(t:CATransform3D, center:CGPoint, disZ:CGFloat) -> CATransform3D{
+        return CATransform3DConcat(t, CATransform3DMakePerspective(center, disZ: disZ))
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-       
     }
     
     private func config(){
@@ -51,8 +83,7 @@ class MainViewController: UIViewController {
         
         if sender.tag==0 {
             //快速登录 直接载入
-            let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-            let mainTabBar = storyboard.instantiateViewControllerWithIdentifier("maintabbar")
+            let mainTabBar = contentStoryboard.instantiateViewControllerWithIdentifier("maintabbar")
             self.showViewController(mainTabBar, sender: nil)
         }else{
             
@@ -91,7 +122,7 @@ class MainViewController: UIViewController {
                 
                 if success{
                     //载入
-                    let mainTabBar = mainStoryboard.instantiateViewControllerWithIdentifier("maintabbar")
+                    let mainTabBar = contentStoryboard.instantiateViewControllerWithIdentifier("maintabbar")
                     self.showViewController(mainTabBar, sender: nil)
                     
                 }else{

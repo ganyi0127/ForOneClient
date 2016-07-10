@@ -16,12 +16,14 @@
 		049DD9361CFDD26C005BBD73 /* ForOne_ClientUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049DD9351CFDD26C005BBD73 /* ForOne_ClientUITests.swift */; };
 		049DD9451CFDE74C005BBD73 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049DD9441CFDE74C005BBD73 /* Session.swift */; };
 		049DD9471CFF2976005BBD73 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049DD9461CFF2976005BBD73 /* AlertView.swift */; };
+		32118EC21D30FF0B00D7BBAA /* FOPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32118EC11D30FF0B00D7BBAA /* FOPicker.swift */; };
+		32118EC51D31040300D7BBAA /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32118EC41D31040300D7BBAA /* UIViewControllerExtension.swift */; };
 		3224095E1CFE7A7E00F9E66E /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3224095D1CFE7A7E00F9E66E /* RegisterViewController.swift */; };
 		322409601CFEE35100F9E66E /* Configure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3224095F1CFEE35100F9E66E /* Configure.swift */; };
 		322409621D00229E00F9E66E /* SexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322409611D00229E00F9E66E /* SexViewController.swift */; };
 		3224096C1D01694300F9E66E /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3224096B1D01694300F9E66E /* PhotoViewController.swift */; };
 		3242539F1D0C360800A81001 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3242539D1D0C360800A81001 /* Main.storyboard */; };
-		324253A11D0C37E500A81001 /* InfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324253A01D0C37E500A81001 /* InfoTableViewController.swift */; };
+		324253A11D0C37E500A81001 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324253A01D0C37E500A81001 /* ProfileViewController.swift */; };
 		324253A41D0C4EAC00A81001 /* NameTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324253A31D0C4EAC00A81001 /* NameTableViewController.swift */; };
 		324253A91D0C758900A81001 /* City.plist in Resources */ = {isa = PBXBuildFile; fileRef = 324253A81D0C758900A81001 /* City.plist */; };
 		324253AB1D0C7C9B00A81001 /* PlistSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324253AA1D0C7C9A00A81001 /* PlistSource.swift */; };
@@ -29,8 +31,14 @@
 		324253AF1D0D9CE500A81001 /* CityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324253AE1D0D9CE500A81001 /* CityTableViewController.swift */; };
 		324253B31D0DA41900A81001 /* HeightTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324253B21D0DA41900A81001 /* HeightTableViewController.swift */; };
 		324253B51D0DB9E900A81001 /* WeightTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324253B41D0DB9E900A81001 /* WeightTableViewController.swift */; };
-		32FC41CF1D11AA8100F9F499 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FC41CD1D11AA8100F9F499 /* User+CoreDataProperties.swift */; };
-		32FC41D01D11AA8100F9F499 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FC41CE1D11AA8100F9F499 /* User.swift */; };
+		3253EA201D312F6400235A50 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3253EA1F1D312F6400235A50 /* ProfileCell.swift */; };
+		3253EA221D3134D100235A50 /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3253EA211D3134D100235A50 /* ContentCell.swift */; };
+		3253EA251D3161CE00235A50 /* AgeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3253EA241D3161CE00235A50 /* AgeTableViewController.swift */; };
+		3253EA271D32053500235A50 /* FOPickerAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3253EA261D32053500235A50 /* FOPickerAction.swift */; };
+		325564451D322E39008EC927 /* PhoneTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325564441D322E39008EC927 /* PhoneTableViewController.swift */; };
+		3255644C1D324E40008EC927 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3255644A1D324E40008EC927 /* User+CoreDataProperties.swift */; };
+		3255644D1D324E40008EC927 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3255644B1D324E40008EC927 /* User.swift */; };
+		3255644F1D324F38008EC927 /* Content.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3255644E1D324F38008EC927 /* Content.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,12 +74,14 @@
 		049DD9371CFDD26C005BBD73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		049DD9441CFDE74C005BBD73 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		049DD9461CFF2976005BBD73 /* AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		32118EC11D30FF0B00D7BBAA /* FOPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FOPicker.swift; sourceTree = "<group>"; };
+		32118EC41D31040300D7BBAA /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		3224095D1CFE7A7E00F9E66E /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		3224095F1CFEE35100F9E66E /* Configure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configure.swift; sourceTree = "<group>"; };
 		322409611D00229E00F9E66E /* SexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SexViewController.swift; sourceTree = "<group>"; };
 		3224096B1D01694300F9E66E /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		3242539E1D0C360800A81001 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		324253A01D0C37E500A81001 /* InfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoTableViewController.swift; sourceTree = "<group>"; };
+		324253A01D0C37E500A81001 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		324253A31D0C4EAC00A81001 /* NameTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameTableViewController.swift; sourceTree = "<group>"; };
 		324253A81D0C758900A81001 /* City.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = City.plist; sourceTree = "<group>"; };
 		324253AA1D0C7C9A00A81001 /* PlistSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlistSource.swift; sourceTree = "<group>"; };
@@ -79,8 +89,14 @@
 		324253AE1D0D9CE500A81001 /* CityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityTableViewController.swift; sourceTree = "<group>"; };
 		324253B21D0DA41900A81001 /* HeightTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeightTableViewController.swift; sourceTree = "<group>"; };
 		324253B41D0DB9E900A81001 /* WeightTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeightTableViewController.swift; sourceTree = "<group>"; };
-		32FC41CD1D11AA8100F9F499 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		32FC41CE1D11AA8100F9F499 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		3253EA1F1D312F6400235A50 /* ProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
+		3253EA211D3134D100235A50 /* ContentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentCell.swift; sourceTree = "<group>"; };
+		3253EA241D3161CE00235A50 /* AgeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgeTableViewController.swift; sourceTree = "<group>"; };
+		3253EA261D32053500235A50 /* FOPickerAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FOPickerAction.swift; sourceTree = "<group>"; };
+		325564441D322E39008EC927 /* PhoneTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneTableViewController.swift; sourceTree = "<group>"; };
+		3255644A1D324E40008EC927 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		3255644B1D324E40008EC927 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		3255644E1D324F38008EC927 /* Content.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Content.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,7 +149,9 @@
 			children = (
 				049DD9141CFDD26B005BBD73 /* MainViewController.swift */,
 				3242539D1D0C360800A81001 /* Main.storyboard */,
+				3255644E1D324F38008EC927 /* Content.storyboard */,
 				3224095C1CFE7A4100F9E66E /* 注册页 */,
+				32118EC31D3103D400D7BBAA /* Extension */,
 				049DD9431CFDD2B7005BBD73 /* SupportingFiles */,
 			);
 			path = ForOne_Client;
@@ -177,10 +195,20 @@
 			isa = PBXGroup;
 			children = (
 				049DD9191CFDD26B005BBD73 /* ForOne_Client.xcdatamodeld */,
-				32FC41CD1D11AA8100F9F499 /* User+CoreDataProperties.swift */,
-				32FC41CE1D11AA8100F9F499 /* User.swift */,
+				3255644A1D324E40008EC927 /* User+CoreDataProperties.swift */,
+				3255644B1D324E40008EC927 /* User.swift */,
 			);
 			name = CoreData;
+			sourceTree = "<group>";
+		};
+		32118EC31D3103D400D7BBAA /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				32118EC11D30FF0B00D7BBAA /* FOPicker.swift */,
+				3253EA261D32053500235A50 /* FOPickerAction.swift */,
+				32118EC41D31040300D7BBAA /* UIViewControllerExtension.swift */,
+			);
+			name = Extension;
 			sourceTree = "<group>";
 		};
 		3224095C1CFE7A4100F9E66E /* 注册页 */ = {
@@ -189,7 +217,8 @@
 				3224095D1CFE7A7E00F9E66E /* RegisterViewController.swift */,
 				322409611D00229E00F9E66E /* SexViewController.swift */,
 				3224096B1D01694300F9E66E /* PhotoViewController.swift */,
-				324253A01D0C37E500A81001 /* InfoTableViewController.swift */,
+				324253A01D0C37E500A81001 /* ProfileViewController.swift */,
+				3253EA231D31452200235A50 /* profileCell */,
 				324253A21D0C4C8F00A81001 /* 个人信息填写 */,
 			);
 			name = "注册页";
@@ -203,6 +232,8 @@
 				324253AE1D0D9CE500A81001 /* CityTableViewController.swift */,
 				324253B21D0DA41900A81001 /* HeightTableViewController.swift */,
 				324253B41D0DB9E900A81001 /* WeightTableViewController.swift */,
+				3253EA241D3161CE00235A50 /* AgeTableViewController.swift */,
+				325564441D322E39008EC927 /* PhoneTableViewController.swift */,
 			);
 			name = "个人信息填写";
 			sourceTree = "<group>";
@@ -214,6 +245,15 @@
 				324253AA1D0C7C9A00A81001 /* PlistSource.swift */,
 			);
 			name = "城市信息";
+			sourceTree = "<group>";
+		};
+		3253EA231D31452200235A50 /* profileCell */ = {
+			isa = PBXGroup;
+			children = (
+				3253EA1F1D312F6400235A50 /* ProfileCell.swift */,
+				3253EA211D3134D100235A50 /* ContentCell.swift */,
+			);
+			name = profileCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -325,6 +365,7 @@
 				324253A91D0C758900A81001 /* City.plist in Resources */,
 				049DD9201CFDD26C005BBD73 /* LaunchScreen.storyboard in Resources */,
 				049DD91D1CFDD26C005BBD73 /* Assets.xcassets in Resources */,
+				3255644F1D324F38008EC927 /* Content.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,23 +391,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				324253A41D0C4EAC00A81001 /* NameTableViewController.swift in Sources */,
+				3253EA221D3134D100235A50 /* ContentCell.swift in Sources */,
+				3255644C1D324E40008EC927 /* User+CoreDataProperties.swift in Sources */,
+				3255644D1D324E40008EC927 /* User.swift in Sources */,
 				049DD9451CFDE74C005BBD73 /* Session.swift in Sources */,
 				324253B31D0DA41900A81001 /* HeightTableViewController.swift in Sources */,
+				3253EA251D3161CE00235A50 /* AgeTableViewController.swift in Sources */,
 				322409621D00229E00F9E66E /* SexViewController.swift in Sources */,
 				324253AB1D0C7C9B00A81001 /* PlistSource.swift in Sources */,
 				3224095E1CFE7A7E00F9E66E /* RegisterViewController.swift in Sources */,
-				324253A11D0C37E500A81001 /* InfoTableViewController.swift in Sources */,
+				3253EA271D32053500235A50 /* FOPickerAction.swift in Sources */,
+				3253EA201D312F6400235A50 /* ProfileCell.swift in Sources */,
+				324253A11D0C37E500A81001 /* ProfileViewController.swift in Sources */,
 				049DD9471CFF2976005BBD73 /* AlertView.swift in Sources */,
 				322409601CFEE35100F9E66E /* Configure.swift in Sources */,
 				324253AF1D0D9CE500A81001 /* CityTableViewController.swift in Sources */,
 				324253AD1D0C80F200A81001 /* LocationTableViewController.swift in Sources */,
 				049DD9151CFDD26B005BBD73 /* MainViewController.swift in Sources */,
+				325564451D322E39008EC927 /* PhoneTableViewController.swift in Sources */,
 				049DD91B1CFDD26B005BBD73 /* ForOne_Client.xcdatamodeld in Sources */,
-				32FC41CF1D11AA8100F9F499 /* User+CoreDataProperties.swift in Sources */,
-				32FC41D01D11AA8100F9F499 /* User.swift in Sources */,
 				049DD9131CFDD26B005BBD73 /* AppDelegate.swift in Sources */,
 				3224096C1D01694300F9E66E /* PhotoViewController.swift in Sources */,
+				32118EC21D30FF0B00D7BBAA /* FOPicker.swift in Sources */,
 				324253B51D0DB9E900A81001 /* WeightTableViewController.swift in Sources */,
+				32118EC51D31040300D7BBAA /* UIViewControllerExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,29 +1,27 @@
 //
-//  WeightTableViewController.swift
+//  AgeTabelViewController.swift
 //  ForOne_Client
 //
-//  Created by YiGan on 16/6/12.
-//  Copyright © 2016年 gan. All rights reserved.
+//  Created by YiGan on 7/10/16.
+//  Copyright © 2016 gan. All rights reserved.
 //
 
 import UIKit
-
-class WeightTableViewController: UITableViewController {
-    
-    @IBOutlet weak var weightTextField: UITextField!
+class AgeTableViewController: UITableViewController {
+    @IBOutlet weak var ageTextField: UITextField!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        weightTextField.text = "\(myUser?.weight)"
+        ageTextField.text = "\(myUser?.age)"
         saveButton.tintColor = lightColor
 
     }
     
     @IBAction func save(sender: UIBarButtonItem) {
         
-        guard let text = weightTextField.text else{
+        guard let text = ageTextField.text else{
             return
         }
         
@@ -32,23 +30,23 @@ class WeightTableViewController: UITableViewController {
             //判断是否为纯数字
             let noDigitText = text.stringByTrimmingCharactersInSet(NSCharacterSet.decimalDigitCharacterSet())
             guard noDigitText.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) == 0 else{
-                errorAlert("体重只能输入阿拉伯数字噢")
+                errorAlert("年龄只能输入阿拉伯数字噢")
                 return
             }
             
-            //判断体重范围为 10~200
-            guard let weight = Int32(text) where weight > 10 && weight < 200 else{
-                errorAlert("要输入正确的体重范围噢")
+            //判断年龄范围为 5~95
+            guard let age = Int32(text) where age > 5 && age < 95 else{
+                errorAlert("要输入正确的年龄范围噢")
                 return
             }
             
             do{
-                myUser?.weight = weight
+                myUser?.age = age
                 try context.save()
                 
                 navigationController?.popViewControllerAnimated(true)
             }catch let error{
-                print("CoreData保存体重错误: \(error)")
+                print("CoreData保存年龄错误: \(error)")
             }
         }
     }
@@ -62,7 +60,7 @@ class WeightTableViewController: UITableViewController {
     }
 }
 
-extension WeightTableViewController:UITextFieldDelegate{
+extension AgeTableViewController:UITextFieldDelegate{
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         save(saveButton)
@@ -74,7 +72,7 @@ extension WeightTableViewController:UITextFieldDelegate{
         let existedLength = textField.text?.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
         let selectedLength = range.length
         let replaceLength = string.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
-        if existedLength! - selectedLength + replaceLength > 3{
+        if existedLength! - selectedLength + replaceLength > 2{
             return false
         }
         return true
@@ -91,9 +89,9 @@ extension WeightTableViewController:UITextFieldDelegate{
             saveButton.tintColor = darkColor
         }
         
-        if sender.text?.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 3{
-            while sender.text!.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 3 {
-
+        if sender.text?.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 2{
+            while sender.text!.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 2 {
+                
                 sender.text = sender.text![sender.text!.startIndex..<sender.text!.endIndex.advancedBy(-1)]
             }
         }
