@@ -73,4 +73,9 @@ get{
 }
 }
 
+//国际化
+func Local(key:String) -> String{
+    return NSLocalizedString(key, comment: key)
+}
+
 

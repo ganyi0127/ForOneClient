@@ -39,6 +39,8 @@
 		3255644C1D324E40008EC927 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3255644A1D324E40008EC927 /* User+CoreDataProperties.swift */; };
 		3255644D1D324E40008EC927 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3255644B1D324E40008EC927 /* User.swift */; };
 		3255644F1D324F38008EC927 /* Content.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3255644E1D324F38008EC927 /* Content.storyboard */; };
+		325564551D3270A9008EC927 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 325564571D3270A9008EC927 /* InfoPlist.strings */; };
+		3255645C1D327107008EC927 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3255645E1D327107008EC927 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,7 +82,6 @@
 		3224095F1CFEE35100F9E66E /* Configure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configure.swift; sourceTree = "<group>"; };
 		322409611D00229E00F9E66E /* SexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SexViewController.swift; sourceTree = "<group>"; };
 		3224096B1D01694300F9E66E /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
-		3242539E1D0C360800A81001 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		324253A01D0C37E500A81001 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		324253A31D0C4EAC00A81001 /* NameTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameTableViewController.swift; sourceTree = "<group>"; };
 		324253A81D0C758900A81001 /* City.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = City.plist; sourceTree = "<group>"; };
@@ -97,6 +98,12 @@
 		3255644A1D324E40008EC927 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3255644B1D324E40008EC927 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3255644E1D324F38008EC927 /* Content.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Content.storyboard; sourceTree = "<group>"; };
+		325564541D32709A008EC927 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		325564581D3270AC008EC927 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		325564591D3270AE008EC927 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		3255645D1D327107008EC927 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3255645F1D327109008EC927 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		325564661D32744C008EC927 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +159,7 @@
 				3255644E1D324F38008EC927 /* Content.storyboard */,
 				3224095C1CFE7A4100F9E66E /* 注册页 */,
 				32118EC31D3103D400D7BBAA /* Extension */,
+				325564501D326F22008EC927 /* 国际化 */,
 				049DD9431CFDD2B7005BBD73 /* SupportingFiles */,
 			);
 			path = ForOne_Client;
@@ -182,11 +190,8 @@
 				049DD91C1CFDD26C005BBD73 /* Assets.xcassets */,
 				049DD91E1CFDD26C005BBD73 /* LaunchScreen.storyboard */,
 				049DD9211CFDD26C005BBD73 /* Info.plist */,
-				324253A71D0C756C00A81001 /* 城市信息 */,
+				324253A71D0C756C00A81001 /* 城市plist */,
 				049DD9481D009402005BBD73 /* CoreData */,
-				049DD9441CFDE74C005BBD73 /* Session.swift */,
-				3224095F1CFEE35100F9E66E /* Configure.swift */,
-				049DD9461CFF2976005BBD73 /* AlertView.swift */,
 			);
 			name = SupportingFiles;
 			sourceTree = "<group>";
@@ -204,8 +209,11 @@
 		32118EC31D3103D400D7BBAA /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				3224095F1CFEE35100F9E66E /* Configure.swift */,
+				049DD9441CFDE74C005BBD73 /* Session.swift */,
 				32118EC11D30FF0B00D7BBAA /* FOPicker.swift */,
 				3253EA261D32053500235A50 /* FOPickerAction.swift */,
+				049DD9461CFF2976005BBD73 /* AlertView.swift */,
 				32118EC41D31040300D7BBAA /* UIViewControllerExtension.swift */,
 			);
 			name = Extension;
@@ -238,13 +246,13 @@
 			name = "个人信息填写";
 			sourceTree = "<group>";
 		};
-		324253A71D0C756C00A81001 /* 城市信息 */ = {
+		324253A71D0C756C00A81001 /* 城市plist */ = {
 			isa = PBXGroup;
 			children = (
 				324253A81D0C758900A81001 /* City.plist */,
 				324253AA1D0C7C9A00A81001 /* PlistSource.swift */,
 			);
-			name = "城市信息";
+			name = "城市plist";
 			sourceTree = "<group>";
 		};
 		3253EA231D31452200235A50 /* profileCell */ = {
@@ -254,6 +262,15 @@
 				3253EA211D3134D100235A50 /* ContentCell.swift */,
 			);
 			name = profileCell;
+			sourceTree = "<group>";
+		};
+		325564501D326F22008EC927 /* 国际化 */ = {
+			isa = PBXGroup;
+			children = (
+				325564571D3270A9008EC927 /* InfoPlist.strings */,
+				3255645E1D327107008EC927 /* Localizable.strings */,
+			);
+			name = "国际化";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -343,6 +360,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 049DD9061CFDD26B005BBD73;
 			productRefGroup = 049DD9101CFDD26B005BBD73 /* Products */;
@@ -362,7 +380,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3242539F1D0C360800A81001 /* Main.storyboard in Resources */,
+				325564551D3270A9008EC927 /* InfoPlist.strings in Resources */,
 				324253A91D0C758900A81001 /* City.plist in Resources */,
+				3255645C1D327107008EC927 /* Localizable.strings in Resources */,
 				049DD9201CFDD26C005BBD73 /* LaunchScreen.storyboard in Resources */,
 				049DD91D1CFDD26C005BBD73 /* Assets.xcassets in Resources */,
 				3255644F1D324F38008EC927 /* Content.storyboard in Resources */,
@@ -454,6 +474,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				049DD91F1CFDD26C005BBD73 /* Base */,
+				325564541D32709A008EC927 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -461,9 +482,27 @@
 		3242539D1D0C360800A81001 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				3242539E1D0C360800A81001 /* Base */,
+				325564661D32744C008EC927 /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		325564571D3270A9008EC927 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				325564581D3270AC008EC927 /* en */,
+				325564591D3270AE008EC927 /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		3255645E1D327107008EC927 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3255645D1D327107008EC927 /* en */,
+				3255645F1D327109008EC927 /* zh-Hans */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -560,7 +599,7 @@
 				INFOPLIST_FILE = ForOne_Client/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.orangebrush.ForOne-Client";
+				PRODUCT_BUNDLE_IDENTIFIER = com.orangebrush.foroneclient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -573,7 +612,7 @@
 				INFOPLIST_FILE = ForOne_Client/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.orangebrush.ForOne-Client";
+				PRODUCT_BUNDLE_IDENTIFIER = com.orangebrush.foroneclient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

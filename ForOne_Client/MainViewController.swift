@@ -16,19 +16,27 @@ class MainViewController: UIViewController {
     
     @IBOutlet var noteLabel: UILabel!
     
-    @IBInspectable
-    @IBOutlet var loginButton: UIButton!
+    
+    @IBInspectable @IBOutlet var loginButton: UIButton!
     var activityIndicatorView:UIActivityIndicatorView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
        
         config()
-        
+
         //test3D
 //        let rotate = CATransform3DMakeRotation(CGFloat(M_PI_2) / 6, 1, 0, 0)
 //        view.layer.transform = CATransform3DPerspect(rotate, center: CGPoint(x: 0, y:0), disZ: 1000)
 //
+        
+//        var trans = CATransform3DIdentity
+//        trans.m34 = -1 / 500
+//        let angel = CGFloat(M_PI/4)
+//        trans = CATransform3DMakeRotation(angel, 1, 0, 0)
+//        view.layer.transform = trans
+        
+        
 //        let anim = CABasicAnimation(keyPath: "position.x")
 //        anim.fromValue = 0
 //        anim.toValue = view.bounds.size.width
@@ -50,9 +58,11 @@ class MainViewController: UIViewController {
     private func CATransform3DMakePerspective(center:CGPoint, disZ:CGFloat) -> CATransform3D{
         let transToCenter = CATransform3DMakeTranslation(-center.x, -center.y, 0)
         let transBack = CATransform3DMakeTranslation(0, 0, 0)
-        var scale = CATransform3DIdentity
-        scale.m34 = -1/disZ
-        return CATransform3DConcat(CATransform3DConcat(transToCenter, scale), transBack)
+        
+        //获取标准矩阵
+        var transform = CATransform3DIdentity
+        transform.m34 = -1/disZ
+        return CATransform3DConcat(CATransform3DConcat(transToCenter, transform), transBack)
     }
     
     private func CATransform3DPerspect(t:CATransform3D, center:CGPoint, disZ:CGFloat) -> CATransform3D{
@@ -66,13 +76,12 @@ class MainViewController: UIViewController {
     private func config(){
         NotifictionCenter.addObserver(self, selector: #selector(MainViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
         NotifictionCenter.addObserver(self, selector: #selector(MainViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
-        
         loginButton.layer.cornerRadius = loginButton.frame.size.width / 2
     }
 
     //MARK:注册，用于快速登陆时注册
     func register(sender: UIButton) {
-        
+       
     }
     
     //MARK:登陆
